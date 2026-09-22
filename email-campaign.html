@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>אולי זה הזמן להתקדם למרכזייה חכמה | BotiPhone</title>
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #f0f4f8;
+      font-family: 'Heebo', Arial, sans-serif;
+      direction: rtl;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrapper {
+      width: 100%;
+      background-color: #f0f4f8;
+      padding: 40px 16px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.10);
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: linear-gradient(135deg, #0A0E27 0%, #1A1060 50%, #0d1b4b 100%);
+      padding: 40px 40px 36px;
+      text-align: center;
+      position: relative;
+    }
+
+    .header-logo {
+      font-size: 32px;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .header-logo span {
+      color: #00D4FF;
+    }
+
+    .header-tagline {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #0A0E27 0%, #1A1060 100%);
+      padding: 0 40px 48px;
+      text-align: center;
+    }
+
+    .hero-icon {
+      font-size: 72px;
+      line-height: 1;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .hero h1 {
+      font-size: 30px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.35;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      color: #00D4FF;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.7;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+
+    /* ── BODY ── */
+    .body {
+      padding: 44px 40px 36px;
+      background: #ffffff;
+    }
+
+    .body > p {
+      font-size: 16px;
+      color: #374151;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    /* ── FEATURES ── */
+    .features-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #6B7280;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .feature-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px 20px;
+      border-radius: 14px;
+      margin-bottom: 12px;
+      border: 1.5px solid #f0f4f8;
+      background: #fafbff;
+      transition: border-color 0.2s;
+    }
+
+    .feature-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .feature-text h3 {
+      font-size: 15px;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+
+    .feature-text p {
+      font-size: 14px;
+      color: #6B7280;
+      line-height: 1.6;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to left, transparent, #e5e7eb, transparent);
+      margin: 32px 0;
+    }
+
+    /* ── SOCIAL PROOF ── */
+    .proof-box {
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 1.5px solid #bae6fd;
+      border-radius: 16px;
+      padding: 24px 28px;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .proof-number {
+      font-size: 48px;
+      font-weight: 900;
+      color: #0284c7;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .proof-text {
+      font-size: 15px;
+      color: #0369a1;
+      font-weight: 600;
+    }
+
+    .proof-sub {
+      font-size: 13px;
+      color: #0369a1;
+      opacity: 0.75;
+      margin-top: 4px;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #0ea5e9, #2563eb);
+      color: #ffffff !important;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 800;
+      padding: 16px 40px;
+      border-radius: 50px;
+      letter-spacing: 0.3px;
+      box-shadow: 0 8px 24px rgba(14,165,233,0.35);
+    }
+
+    .cta-sub {
+      margin-top: 14px;
+      font-size: 14px;
+      color: #9CA3AF;
+    }
+
+    /* ── PHONE ── */
+    .phone-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #f9fafb;
+      border-radius: 50px;
+      padding: 14px 28px;
+      margin: 0 auto 8px;
+      border: 1.5px solid #e5e7eb;
+      max-width: fit-content;
+    }
+
+    .phone-icon {
+      font-size: 20px;
+    }
+
+    .phone-number {
+      font-size: 22px;
+      font-weight: 900;
+      color: #111827;
+      text-decoration: none;
+      letter-spacing: 1px;
+      direction: ltr;
+      display: inline-block;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #f9fafb;
+      padding: 28px 40px;
+      text-align: center;
+      border-top: 1px solid #f0f4f8;
+    }
+
+    .footer-logo {
+      font-size: 18px;
+      font-weight: 900;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+
+    .footer-logo span { color: #0ea5e9; }
+
+    .footer p {
+      font-size: 12px;
+      color: #9CA3AF;
+      line-height: 1.7;
+    }
+
+    .footer a {
+      color: #0ea5e9;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .header, .hero, .body { padding-right: 24px; padding-left: 24px; }
+      .hero h1 { font-size: 24px; }
+      .proof-number { font-size: 38px; }
+      .cta-btn { font-size: 15px; padding: 14px 28px; }
+      .phone-number { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-logo">Boti<span>Phone</span></div>
+      <div class="header-tagline">מרכזייה הדור הבא</div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+      <span class="hero-icon">🤖</span>
+      <h1>אולי זה הזמן<br/>להתקדם ל<span>מרכזייה חכמה</span></h1>
+      <p>
+        עסקים רבים עדיין עובדים עם מרכזייה ישנה — תפריטים מסורבלים,
+        שיחות שלא נענות, נציגים שמאבדים זמן על לידים קרים. יש דרך אחרת.
+      </p>
+    </div>
+
+    <!-- BODY -->
+    <div class="body">
+
+      <div class="features-title">מה BotiPhone עושה בשבילך</div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <div class="feature-text">
+          <h3>בוט AI שעונה 24/6</h3>
+          <p>מבין עברית טבעית, עונה על שאלות, קובע פגישות ומעביר לנציג כשצריך. בלי "הקש 1", בלי תפריטים.</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📞</div>
+        <div class="feature-text">
+          <h3>קמפיינים אוטומטיים</h3>
+          <p>הבוט מחייג לאלפי לידים, מסנן את הרציניים ומעביר אותם חמים ישירות לנציג שלך.</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <div class="feature-text">
+          <h3>ניהול נציגים מלא</h3>
+          <p>תורים, ניתוב חכם, הקלטות ודוחות ביצועים — הכל במקום אחד, מכל מקום.</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <div class="feature-text">
+          <h3>AI שמקשיב לכל שיחה</h3>
+          <p>מזהה בעיות, מאמן את הצוות ומשפר תסריטים אוטומטית — בלי מאמץ מצדך.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- SOCIAL PROOF -->
+      <div class="proof-box">
+        <div class="proof-number">×3</div>
+        <div class="proof-text">יותר עסקאות סגורות</div>
+        <div class="proof-sub">עם אותו צוות בדיוק — עסקים שעברו ל-BotiPhone</div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-section">
+        <a href="https://www.botiphone.com" class="cta-btn">
+          לפרטים נוספים ←
+        </a>
+        <div class="cta-sub">ללא התחייבות • הדגמה חיה עם הבוט עצמו</div>
+      </div>
+
+      <!-- PHONE -->
+      <div style="text-align:center;">
+        <div class="phone-row">
+          <span class="phone-icon">📲</span>
+          <a href="tel:039306454" class="phone-number">03-9306454</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="footer-logo">Boti<span>Phone</span></div>
+      <p>
+        מערכת התקשורת העסקית המתקדמת בישראל<br/>
+        תל אביב, ישראל &nbsp;|&nbsp;
+        <a href="https://www.botiphone.com">botiphone.com</a> &nbsp;|&nbsp;
+        <a href="mailto:support@botiphone.com">support@botiphone.com</a>
+      </p>
+      <p style="margin-top:12px; font-size:11px; color:#d1d5db;">
+        קיבלת מייל זה כי עסקך עשוי להפיק תועלת מהשירות שלנו.<br/>
+        <a href="#" style="color:#d1d5db;">הסרה מהרשימה</a>
+      </p>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

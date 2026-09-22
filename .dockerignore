@@ -1,0 +1,10 @@
+node_modules
+.next
+.git
+_legacy
+data
+*.pdf
+*.csv
+.env
+.env*.local
+README.md

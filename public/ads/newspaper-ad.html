@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>מודעת עיתון — החוק החדש בדרך | BotiPhone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #041530;
+      --deep: #061a3d;
+      --blue: #0b4db5;
+      --cyan: #3fd0ff;
+      --cyan-hot: #7aecff;
+      --gold: #ffd12a;
+      --gold-hot: #ffe566;
+      --purple: #9b5cff;
+      --purple-deep: #6b2fd4;
+      --pink: #ff5cad;
+      --red: #ff4d6d;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: #9aabbf; }
+    body {
+      font-family: Heebo, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      color: #fff;
+    }
+
+    .toolbar {
+      position: sticky; top: 0; z-index: 40;
+      display: flex; justify-content: center; gap: 10px;
+      padding: 12px; background: #03101f; color: #fff;
+    }
+    .toolbar button {
+      font-family: inherit; font-weight: 800; font-size: 14px;
+      border: 0; border-radius: 999px; padding: 10px 18px;
+      cursor: pointer; color: #03101f; background: var(--gold);
+    }
+    .toolbar span { align-self: center; font-size: 13px; opacity: .7; }
+
+    .sheet-wrap { padding: 24px 14px 40px; }
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+      box-shadow: 0 26px 60px rgba(4, 21, 48, .45);
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+      background:
+        radial-gradient(90% 55% at 100% 0%, rgba(63,208,255,.35), transparent 55%),
+        radial-gradient(70% 50% at 0% 10%, rgba(155,92,255,.28), transparent 50%),
+        radial-gradient(60% 40% at 50% 100%, rgba(11,77,181,.55), transparent 60%),
+        linear-gradient(165deg, #062356 0%, #041530 38%, #071a40 72%, #03101f 100%);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* decorative light */
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 78% 22%, rgba(255,209,42,.12), transparent 18%),
+        radial-gradient(circle at 18% 70%, rgba(63,208,255,.08), transparent 22%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(28px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb.a { width: 180px; height: 180px; top: -40px; left: -30px; background: rgba(63,208,255,.35); }
+    .orb.b { width: 220px; height: 220px; top: 34%; right: -70px; background: rgba(155,92,255,.28); }
+    .orb.c { width: 160px; height: 160px; bottom: 18%; left: 20%; background: rgba(255,209,42,.12); }
+
+    .pad { position: relative; z-index: 2; padding: 4.2mm 5.5mm 0; display: flex; flex-direction: column; flex: 1; min-height: 0; }
+
+    /* ── Top bar ── */
+    .top {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 8px;
+      align-items: stretch;
+    }
+    .brand {
+      background: linear-gradient(145deg, rgba(255,255,255,.1), rgba(255,255,255,.03));
+      border: 1px solid rgba(125,210,255,.25);
+      border-radius: 16px;
+      padding: 8px 11px;
+      display: flex; align-items: center; gap: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.15);
+      min-width: 52mm;
+    }
+    .logo-badge {
+      width: 36px; height: 36px; border-radius: 12px;
+      background: linear-gradient(145deg, #3fd0ff, #0b4db5);
+      display: grid; place-items: center;
+      box-shadow: 0 0 18px rgba(63,208,255,.55), 0 4px 10px rgba(0,0,0,.25);
+    }
+    .brand-name { font-size: 23px; font-weight: 900; letter-spacing: -.5px; line-height: 1; }
+    .brand-name em { font-style: normal; color: var(--cyan); text-shadow: 0 0 16px rgba(63,208,255,.6); }
+    .brand-sub { font-size: 10px; font-weight: 700; color: rgba(255,255,255,.65); margin-top: 2px; }
+
+    /* Law — big colorful banner */
+    .law {
+      position: relative;
+      border-radius: 18px;
+      padding: 8px 12px 9px;
+      overflow: hidden;
+      background:
+        linear-gradient(120deg, rgba(255,209,42,.95) 0%, rgba(255,180,40,.88) 18%, rgba(18,70,160,.55) 42%, rgba(90,40,180,.55) 100%);
+      box-shadow:
+        0 12px 28px rgba(0,0,0,.28),
+        0 0 0 1px rgba(255,255,255,.2),
+        0 0 40px rgba(255,209,42,.25);
+    }
+    .law::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: 17px;
+      background: linear-gradient(135deg, rgba(8,30,70,.82), rgba(20,50,130,.78) 45%, rgba(70,30,140,.75));
+      z-index: 0;
+    }
+    .law > * { position: relative; z-index: 1; }
+    .law-top {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    }
+    .law-title {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 22px; font-weight: 900; line-height: 1;
+      text-shadow: 0 2px 0 rgba(0,0,0,.25);
+    }
+    .law-title span {
+      color: var(--gold);
+      text-shadow: 0 0 18px rgba(255,209,42,.7), 0 2px 0 rgba(0,0,0,.25);
+    }
+    .gavel {
+      width: 38px; height: 38px; border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 0 18px rgba(255,209,42,.75), 0 3px 0 rgba(0,0,0,.2);
+      border: 2px solid rgba(255,209,42,.85);
+    }
+    .gavel img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .urgent {
+      background: linear-gradient(90deg, var(--red), #ff7a4d);
+      color: #fff;
+      font-size: 11px; font-weight: 900;
+      padding: 5px 11px;
+      border-radius: 999px;
+      box-shadow: 0 4px 14px rgba(255,77,109,.45);
+      white-space: nowrap;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 4px 14px rgba(255,77,109,.45); }
+      50% { transform: scale(1.04); box-shadow: 0 6px 20px rgba(255,77,109,.65); }
+    }
+    .law p {
+      font-size: 11.5px; font-weight: 700; line-height: 1.35;
+      color: rgba(255,255,255,.92);
+      margin: 5px 0 7px;
+      max-width: 95%;
+    }
+    .law-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+    .chip {
+      font-size: 10.5px; font-weight: 800;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      backdrop-filter: blur(4px);
+    }
+    .chip.gold {
+      background: linear-gradient(90deg, #ffe566, #ffd12a);
+      color: #041530;
+      border: 0;
+      box-shadow: 0 3px 10px rgba(255,209,42,.4);
+    }
+    .chip.ask {
+      background: rgba(255,77,109,.2);
+      border-color: rgba(255,77,109,.45);
+      color: #ffd0d8;
+    }
+    .chip.ask em { font-style: normal; color: #fff; font-weight: 900; }
+
+    /* ── Hero cinematic ── */
+    .hero {
+      margin-top: 3.8mm;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      min-height: 64mm;
+      flex-shrink: 0;
+      box-shadow:
+        0 16px 36px rgba(0,0,0,.35),
+        0 0 0 1px rgba(125,210,255,.25),
+        inset 0 0 40px rgba(63,208,255,.08);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(105deg, rgba(4,21,48,.92) 0%, rgba(4,21,48,.78) 38%, rgba(4,21,48,.25) 62%, rgba(4,21,48,.15) 100%),
+        url("desk-hero.png") center right / cover no-repeat;
+    }
+    .hero-bg::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(60% 80% at 80% 50%, transparent 20%, rgba(4,21,48,.35) 100%);
+    }
+    .hero-shine {
+      position: absolute;
+      top: -40%; left: -10%;
+      width: 50%; height: 180%;
+      background: linear-gradient(100deg, transparent, rgba(63,208,255,.12), transparent);
+      transform: rotate(12deg);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 13px 15px;
+      max-width: 62%;
+      display: flex; flex-direction: column; justify-content: center;
+      min-height: 64mm;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 6px;
+      align-self: flex-start;
+      background: rgba(63,208,255,.15);
+      border: 1px solid rgba(63,208,255,.35);
+      color: var(--cyan-hot);
+      font-size: 10.5px; font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 7px;
+      box-shadow: 0 0 16px rgba(63,208,255,.2);
+    }
+    .hero h1 {
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -.6px;
+    }
+    .hero h1 .w { color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,.35); }
+    .hero h1 .c {
+      color: var(--cyan-hot);
+      display: block;
+      text-shadow: 0 0 24px rgba(63,208,255,.55), 0 2px 8px rgba(0,0,0,.3);
+    }
+    .hero h1 .s {
+      display: block;
+      font-size: 18px;
+      margin-top: 4px;
+      color: #fff;
+      font-weight: 800;
+    }
+    .hero p {
+      margin-top: 9px;
+      font-size: 14.5px;
+      font-weight: 700;
+      line-height: 1.45;
+      color: rgba(255,255,255,.92);
+      text-shadow: 0 1px 8px rgba(0,0,0,.35);
+      max-width: 98%;
+    }
+    .hero p .hl {
+      color: var(--cyan-hot);
+      font-weight: 900;
+      text-shadow: 0 0 14px rgba(63,208,255,.45);
+    }
+    .hero p .hl2 {
+      color: var(--gold-hot);
+      font-weight: 900;
+      text-shadow: 0 0 12px rgba(255,209,42,.4);
+    }
+    .hero p .hl3 {
+      color: #d4b4ff;
+      font-weight: 900;
+      text-shadow: 0 0 12px rgba(155,92,255,.4);
+    }
+    .hero-tags {
+      display: flex; flex-wrap: wrap; gap: 5px;
+      margin-top: 9px;
+    }
+    .htag {
+      font-size: 11.5px; font-weight: 800;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.22);
+    }
+    .htag.hot {
+      background: linear-gradient(90deg, rgba(255,209,42,.95), rgba(255,160,40,.9));
+      color: #041530;
+      border: 0;
+      box-shadow: 0 0 14px rgba(255,209,42,.4);
+    }
+    .htag.cyan {
+      background: rgba(63,208,255,.18);
+      border-color: rgba(63,208,255,.4);
+      color: var(--cyan-hot);
+    }
+    .htag.purple {
+      background: rgba(155,92,255,.22);
+      border-color: rgba(196,160,255,.4);
+      color: #e0c8ff;
+    }
+
+    /* ── Features ── */
+    .features {
+      margin-top: 3.6mm;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .feat {
+      text-align: center;
+      background: linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.03));
+      border: 1px solid rgba(125,210,255,.18);
+      border-radius: 14px;
+      padding: 7px 4px 8px;
+      box-shadow: 0 6px 16px rgba(0,0,0,.15), inset 0 1px 0 rgba(255,255,255,.1);
+    }
+    .ico {
+      width: 40px; height: 40px;
+      margin: 0 auto 5px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      background: radial-gradient(circle at 32% 28%, #7aecff, #2f7fe0 62%, #5b3fd4);
+      box-shadow:
+        0 0 16px rgba(63,208,255,.45),
+        0 4px 0 rgba(8,40,100,.35),
+        inset 0 1px 0 rgba(255,255,255,.45);
+      color: #fff;
+    }
+    .ico svg { width: 18px; height: 18px; }
+    .feat strong {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 900;
+      line-height: 1.15;
+      color: #fff;
+    }
+    .feat span {
+      display: block;
+      font-size: 9.5px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--cyan-hot);
+      margin-top: 2px;
+      opacity: .9;
+    }
+    .feat:nth-child(5n+2) span { color: #d4b4ff; }
+    .feat:nth-child(5n+3) span { color: var(--gold-hot); }
+    .feat:nth-child(5n+4) span { color: #7aecff; }
+    .feat:nth-child(5n+5) span { color: #ffb4d8; }
+
+    /* ── Plans ── */
+    .plans {
+      margin-top: 3.4mm;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .plan {
+      border-radius: 18px;
+      padding: 11px 12px 11px;
+      position: relative;
+      overflow: hidden;
+      min-height: 118px;
+      box-shadow: 0 12px 28px rgba(0,0,0,.25);
+    }
+    .plan::before {
+      content: "";
+      position: absolute;
+      top: -40px; left: -20px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      filter: blur(20px);
+      opacity: .55;
+      pointer-events: none;
+    }
+    .plan.basic {
+      background: linear-gradient(155deg, #e8f6ff 0%, #b6e0ff 55%, #8ecfff 100%);
+      color: #062356;
+    }
+    .plan.basic::before { background: #7aecff; }
+    .plan.crm {
+      background: linear-gradient(155deg, #c4a0ff 0%, #9b5cff 45%, #6b2fd4 100%);
+      color: #fff;
+    }
+    .plan.crm::before { background: #ff9de0; right: -20px; left: auto; }
+    .plan-head {
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 6px;
+      position: relative; z-index: 1;
+    }
+    .plan h3 {
+      font-size: 15px; font-weight: 900; line-height: 1.15;
+      max-width: 62%;
+    }
+    .plan h3 small {
+      display: block; font-size: 11px; font-weight: 800; opacity: .8; margin-top: 1px;
+    }
+    .splash {
+      width: 66px; height: 66px;
+      position: relative;
+      flex-shrink: 0;
+      display: grid; place-items: center;
+      text-align: center;
+      color: #fff;
+      font-weight: 900;
+      line-height: 1;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,.22));
+      transform: rotate(-8deg);
+    }
+    .splash svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .splash .t { position: relative; z-index: 1; }
+    .splash b { font-size: 20px; display: block; }
+    .splash small { font-size: 7.5px; font-weight: 800; display: block; margin-top: 1px; }
+    .plan ul {
+      list-style: none;
+      margin-top: 7px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px 6px;
+      position: relative; z-index: 1;
+    }
+    .plan li {
+      font-size: 9.8px; font-weight: 750; line-height: 1.28;
+      padding-right: 11px; position: relative;
+    }
+    .plan li::before {
+      content: "✓"; position: absolute; right: 0; font-weight: 900;
+    }
+    .plan.basic li::before { color: #0b4db5; }
+    .plan.crm li::before { color: var(--gold); }
+    .ribbon {
+      margin-top: 7px;
+      display: inline-block;
+      font-size: 10px; font-weight: 900;
+      padding: 4px 10px;
+      border-radius: 999px;
+      position: relative; z-index: 1;
+    }
+    .plan.basic .ribbon {
+      background: linear-gradient(90deg, #0b4db5, #1e6fe0);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(11,77,181,.35);
+    }
+    .plan.crm .ribbon {
+      background: linear-gradient(90deg, #ffe566, #ffd12a);
+      color: #3b1d8a;
+      box-shadow: 0 4px 12px rgba(255,209,42,.4);
+    }
+
+    /* ── Bottom CTA strip ── */
+    .cta-strip {
+      margin-top: 3.2mm;
+      border-radius: 18px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(11,77,181,.95), rgba(107,47,212,.9) 55%, rgba(11,77,181,.95));
+      border: 1px solid rgba(125,210,255,.3);
+      box-shadow: 0 10px 28px rgba(0,0,0,.28), 0 0 30px rgba(155,92,255,.2);
+    }
+    .cta-strip::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.1), transparent);
+      transform: translateX(-30%);
+    }
+    .cta-left { display: flex; align-items: center; gap: 10px; position: relative; z-index: 1; }
+    .bot {
+      width: 52px; height: 52px; border-radius: 50%;
+      overflow: hidden;
+      background: radial-gradient(circle at 35% 30%, #7aecff, #3fd0ff 40%, #2f7fe0);
+      box-shadow: 0 0 22px rgba(63,208,255,.65), 0 4px 10px rgba(0,0,0,.25);
+      flex-shrink: 0;
+      border: 2px solid rgba(122,236,255,.55);
+    }
+    .bot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-phone {
+      position: absolute;
+      left: 10px; bottom: 8px;
+      width: 72px; height: 96px;
+      border-radius: 14px;
+      overflow: hidden;
+      z-index: 3;
+      box-shadow: 0 10px 24px rgba(0,0,0,.4), 0 0 18px rgba(63,208,255,.35);
+      border: 2px solid rgba(125,210,255,.45);
+      transform: rotate(-6deg);
+    }
+    .hero-phone img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cta-strip h4 { font-size: 15px; font-weight: 900; }
+    .cta-strip p { font-size: 11px; font-weight: 650; color: rgba(255,255,255,.85); }
+    .burst {
+      width: 86px; height: 86px;
+      position: relative;
+      flex-shrink: 0;
+      display: grid; place-items: center;
+      text-align: center;
+      color: #041530;
+      font-weight: 900;
+      line-height: 1.05;
+      z-index: 1;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,.3));
+      transform: rotate(6deg);
+    }
+    .burst svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .burst .t { position: relative; z-index: 1; padding: 0 8px; }
+    .burst b { display: block; font-size: 16px; }
+    .burst small { display: block; font-size: 8.5px; font-weight: 800; }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: auto;
+      margin-left: -5.5mm; margin-right: -5.5mm;
+      background:
+        linear-gradient(90deg, #020b18, #0a2a5c 40%, #1a0f45 70%, #020b18);
+      padding: 7px 6mm 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      border-top: 1px solid rgba(63,208,255,.25);
+      box-shadow: 0 -10px 30px rgba(0,0,0,.25);
+      position: relative;
+    }
+    .footer::before {
+      content: "";
+      position: absolute; inset: 0 0 auto 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan), var(--gold), var(--purple), transparent);
+    }
+    .phone-block .num {
+      font-size: 23px; font-weight: 900; color: var(--cyan-hot);
+      letter-spacing: -.4px;
+      text-shadow: 0 0 18px rgba(63,208,255,.5);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .phone-block small {
+      display: block; font-size: 10px; font-weight: 750;
+      color: rgba(255,255,255,.7); margin-top: 1px;
+    }
+    .meta {
+      text-align: center;
+      font-size: 12px; font-weight: 800;
+      color: rgba(255,255,255,.88);
+    }
+    .trust {
+      display: flex; gap: 10px; justify-content: center;
+      margin-top: 2px; font-size: 10px; color: rgba(255,255,255,.65); font-weight: 700;
+    }
+    .slogan {
+      font-family: Caveat, Heebo, cursive;
+      font-size: 24px; font-weight: 700;
+      background: linear-gradient(90deg, var(--cyan-hot), #fff, var(--gold));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      white-space: nowrap;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,.3));
+    }
+    .disclaimer {
+      font-size: 7px; color: rgba(255,255,255,.35);
+      text-align: center; padding: 2px 0 3px;
+      margin-left: -5.5mm; margin-right: -5.5mm;
+      background: #020b18;
+    }
+
+    body.embed { background: #fff; }
+    body.embed .toolbar { display: none; }
+    body.embed .sheet-wrap { padding: 0; }
+    body.embed .page { box-shadow: none; border-radius: 0; }
+
+    @media print {
+      html, body { background: #fff; }
+      .toolbar, .sheet-wrap { padding: 0; }
+      .toolbar { display: none !important; }
+      .page { box-shadow: none; margin: 0; border-radius: 0; }
+      .urgent { animation: none; }
+      @page { size: A4; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+  <script>if (location.search.includes('embed')) document.body.classList.add('embed');</script>
+  <div class="toolbar">
+    <span>מודעת עיתון A4 — BotiPhone</span>
+    <button type="button" onclick="window.print()">הדפסה / שמירה ל-PDF</button>
+  </div>
+
+  <div class="sheet-wrap">
+    <article class="page" aria-label="מודעת עיתון BotiPhone">
+      <div class="orb a"></div>
+      <div class="orb b"></div>
+      <div class="orb c"></div>
+
+      <div class="pad">
+        <header class="top">
+          <div class="brand">
+            <div class="logo-badge" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#041530" stroke-width="2.4">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="brand-name">bot<em>Iphone</em></div>
+              <div class="brand-sub">מערכת מתקדמת לניהול שיחות</div>
+            </div>
+          </div>
+
+          <aside class="law">
+            <div class="law-top">
+              <div class="law-title">
+                <div class="gavel" aria-hidden="true">
+                  <img src="law-badge.png" alt="" />
+                </div>
+                החוק החדש <span>בדרך!</span>
+              </div>
+              <div class="urgent">דחוף · נכנס לתוקף</div>
+            </div>
+            <p>
+              החל מ־22.03.2027 — חובת הקלטת שיחות עם לקוחות, הודעה לצרכן, שמירה בענן ומסירת ההקלטה לפי בקשה.
+              עסק בלי מערכת מתאימה לא יהיה מוכן.
+            </p>
+            <div class="law-chips">
+              <div class="chip gold">22.03.2027 · אל תחכו לרגע האחרון</div>
+              <div class="chip">הקלטה · הודעה · שמירה · מסירה</div>
+              <div class="chip ask">האם המערכת שלכם <em>מוכנה?</em></div>
+            </div>
+          </aside>
+        </header>
+
+        <section class="hero">
+          <div class="hero-bg"></div>
+          <div class="hero-shine"></div>
+          <div class="hero-phone" aria-hidden="true">
+            <img src="voip-phone.png" alt="" />
+          </div>
+          <div class="hero-content">
+            <div class="hero-eyebrow">מוכן לחוק · הקלטות בענן · AI חכם</div>
+            <h1>
+              <span class="w">העסק שלך</span>
+              <span class="c">מגיע רחוק יותר</span>
+              <span class="s">פשוט להקים — מתחילים לעבוד!</span>
+            </h1>
+            <p>
+              <span class="hl">מערכת מתקדמת לניהול שיחות</span> —
+              עם כל הכלים לניהול <span class="hl">שיחות</span>,
+              <span class="hl3">לקוחות</span> ו<span class="hl3">צוות</span>,
+              כולל <span class="hl2">הקלטות שעומדות בדרישות החוק</span>.
+              הכל במקום אחד, פשוט להקים ומתחילים לעבוד.
+            </p>
+            <div class="hero-tags">
+              <span class="htag hot">הקלטות לפי החוק</span>
+              <span class="htag cyan">מרכזייה בענן</span>
+              <span class="htag purple">בוטים וסוכני AI</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="features">
+          <div class="feat">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <strong>תצוגת שיחות בענן</strong><span>לא מפספסים אף לקוח</span>
+          </div>
+          <div class="feat">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <strong>שלוחות מתקדמות</strong><span>תפריטים, תורים והגדרות</span>
+          </div>
+          <div class="feat">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg></div>
+            <strong>הקלטת שיחות</strong><span>אחסון בענן ושחזור</span>
+          </div>
+          <div class="feat">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V9M10 19V5M16 19v-7M22 19V8"/></svg></div>
+            <strong>דוחות וסטטיסטיקות</strong><span>מעקב ביצועים ונציגים</span>
+          </div>
+          <div class="feat">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.3.7.9 1.2 1.6 1.3H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></div>
+            <strong>ניהול מלא</strong><span>הגדרות, שלוחות והעברות</span>
+          </div>
+          <div class="feat">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg></div>
+            <strong>ניהול ודירוג נציגים</strong><span>שיפור ביצועים ומכירות</span>
+          </div>
+          <div class="feat">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H4z"/><path d="m4 4 8 7 8-7"/></svg></div>
+            <strong>תמלול שיחות במייל</strong><span>כל שיחה מתועדת בענן</span>
+          </div>
+          <div class="feat">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v4M8 8H4m16 0h-4M7 16h10M9 20h6"/><rect x="8" y="7" width="8" height="9" rx="2"/></svg></div>
+            <strong>AI לניהול שיחות</strong><span>ניתוח, תגובות והמלצות</span>
+          </div>
+          <div class="feat">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6M8 6 2 12l6 6"/></svg></div>
+            <strong>API ואינטגרציות</strong><span>חיבור לכל המערכות שלך</span>
+          </div>
+          <div class="feat">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="9" width="14" height="10" rx="3"/><path d="M9 9V7a3 3 0 0 1 6 0v2M8 14h.01M16 14h.01"/></svg></div>
+            <strong>בוטים וסוכני AI</strong><span>מענה, איסוף פרטים ומכירה</span>
+          </div>
+        </div>
+
+        <div class="plans">
+          <section class="plan basic">
+            <div class="plan-head">
+              <h3>חבילה בסיסית<small>מערכת לניהול שיחות</small></h3>
+              <div class="splash" aria-hidden="true">
+                <svg viewBox="0 0 100 100"><path fill="#1e6fe0" d="M49 3c9-1 17 4 23 10s13 13 15 22-1 19-8 27-16 13-26 16-20 2-29-4S7 57 5 46s6-22 14-30S40 4 49 3z"/></svg>
+                <div class="t"><b>₪70</b><small>לחודש בלבד</small></div>
+              </div>
+            </div>
+            <ul>
+              <li>עד 500 דקות שיחה בחודש</li>
+              <li>הקלטת שיחות לפי החוק</li>
+              <li>ניהול מלא של המערכת</li>
+              <li>דוחות וסטטיסטיקות</li>
+              <li>שיחות שלא נענו</li>
+              <li>ניהול ודירוג נציגים</li>
+              <li>תמלול שיחות במייל</li>
+              <li>API ואינטגרציות</li>
+            </ul>
+            <div class="ribbon">+ 20 דקות AI חודשיות בחבילה</div>
+          </section>
+
+          <section class="plan crm">
+            <div class="plan-head">
+              <h3>חבילה מתקדמת<small>מרכזייה + CRM</small></h3>
+              <div class="splash" aria-hidden="true">
+                <svg viewBox="0 0 100 100"><path fill="#ff9de0" d="M50 4c10-1 18 4 24 11s12 15 14 24-3 18-9 26-16 13-26 16-20 2-29-3S6 60 5 48s8-23 17-31S40 5 50 4z"/></svg>
+                <div class="t" style="color:#3b1d8a"><b>₪120</b><small>לחודש בלבד</small></div>
+              </div>
+            </div>
+            <ul>
+              <li>כל מה שיש בחבילה הבסיסית</li>
+              <li>מערכת CRM מלאה</li>
+              <li>ניהול לקוחות והיסטוריה</li>
+              <li>ניתוח לקוחות מתקדם</li>
+              <li>דוחות סטטיסטיקה מתקדמים</li>
+              <li>אינטגרציות מתקדמות</li>
+            </ul>
+            <div class="ribbon">מוכן לחוק + ניהול לקוחות מלא</div>
+          </section>
+        </div>
+
+        <div class="cta-strip">
+          <div class="cta-left">
+            <div class="bot" aria-hidden="true">
+              <img src="robot.png" alt="" />
+            </div>
+            <div>
+              <h4>בוטים וסוכני AI טלפוניים</h4>
+              <p>מענה אוטומטי, איסוף פרטים, ניהול שיחות ומכירה</p>
+            </div>
+          </div>
+          <div class="burst" aria-hidden="true">
+            <svg viewBox="0 0 100 100">
+              <path fill="#ffd12a" d="M50 1l8 15 16-5-3 16 15 8-15 8 3 16-16-5-8 15-8-15-16 5 3-16-15-8 15-8-3-16 16 5z"/>
+            </svg>
+            <div class="t">
+              <small>במחיר מבצע</small>
+              <b>0.5 אג'</b>
+              <small>לדקת שיחה</small>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <div class="phone-block">
+            <div class="num">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              03-9306454
+            </div>
+            <small>ייעוץ והצעה: התקשרו עכשיו!</small>
+          </div>
+          <div class="meta">
+            botiphone.com
+            <div class="trust">100% זמינות · תמיכה מהירה בענן</div>
+          </div>
+          <div class="slogan">העסק שלך, מגיע רחוק יותר!</div>
+        </footer>
+        <p class="disclaimer">המידע במודעה הוא כללי ואינו ייעוץ משפטי. תחולת החוק תלויה בסוג העסקה ובתנאי העסק.</p>
+      </div>
+    </article>
+  </div>
+</body>
+</html>
