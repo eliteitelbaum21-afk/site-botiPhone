@@ -19,19 +19,21 @@ const heebo = Heebo({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} | בוט טלפוני חכם, קמפיינים אוטומטיים ומרכזיה בענן`,
+    default: `${site.name} | מרכזייה עסקית חכמה עם AI מובנה`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
   keywords: [
-    "בוט טלפוני",
-    "בוט קולי",
-    "מענה קולי חכם",
-    "קמפיין שיחות אוטומטי",
     "מרכזיה בענן",
     "מרכזייה וירטואלית",
     "מרכזייה לעסק",
     "מרכזייה טלפונית",
+    "ניהול נציגים",
+    "בוט טלפוני",
+    "בוט קולי",
+    "מענה קולי חכם",
+    "קמפיין שיחות אוטומטי",
+    "ניתוח שיחות AI",
   ],
   openGraph: {
     type: "website",

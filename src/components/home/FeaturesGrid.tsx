@@ -14,8 +14,8 @@ const features = [
     icon: <LayoutDashboard className="w-8 h-8 text-brand-primary" />,
     title: "מרכזייה עסקית בשליטה שלך",
     description:
-      "הקמה וניהול של שלוחות, פתיחים ותורי המתנה בקליק. ניתוב שיחות חכם לפי שעות פעילות, שקיפות מלאה עם הקלטות ודוחות – הכל ללא צורך בטכנאי.",
-    href: "/pbx",
+      "שלוחות, פתיחים ותורי המתנה בקליק — עם ניהול נציגים מתקדם, סיכום שיחה אוטומטי למייל ו-AI שמנתח כל שיחה עם ההקשר מהשיחות הקודמות.",
+    href: "/cloud-pbx",
     linkLabel: "למידע נוסף על המרכזייה",
   },
   {
@@ -39,7 +39,7 @@ const features = [
     title: "סוכני AI חכמים לסינון ושירות",
     description:
       "בינה מלאכותית שמנהלת שיחות טבעיות 24/6, מבינה דיבור חופשי, פותרת תקלות נפוצות ומעבירה לנציג אנושי רק את השיחות המורכבות.",
-    href: "/ai-agents",
+    href: "/voice-bot",
     linkLabel: "הכירו את סוכני ה-AI",
   },
   {
@@ -58,12 +58,7 @@ export default function FeaturesGrid() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal>
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              מהמרכזייה ועד ה-AI — בקצב שלכם
-            </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-4">
-              התחילו בתשתית יציבה, והוסיפו CRM, אינטגרציות וסוכני AI כשאתם מוכנים.
-            </p>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">יכולות המערכת</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-brand-primary to-brand-secondary mx-auto rounded-full" />
           </div>
         </Reveal>

@@ -3,9 +3,11 @@ import { Bot, LogIn, Mail, MapPin, Phone } from "lucide-react";
 import { site } from "@/lib/site";
 
 const serviceLinks = [
-  { href: "/voice-bot", label: "בוט טלפוני חכם" },
-  { href: "/campaigns", label: "קמפיין שיחות אוטומטי" },
   { href: "/cloud-pbx", label: "מרכזיה בענן לעסק" },
+  { href: "/voice-bot", label: "סוכני AI טלפוניים" },
+  { href: "/campaigns", label: "קמפיין שיחות אוטומטי" },
+  { href: "/crm", label: "CRM מובנה" },
+  { href: "/api-integrations", label: "API ואינטגרציות" },
   { href: "/pricing", label: "מחירון" },
 ];
 
@@ -29,8 +31,8 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-gray-500 max-w-sm leading-relaxed">
-              מערכת התקשורת העסקית המתקדמת בישראל: בוט טלפוני מבוסס AI, קמפיינים יוצאים
-              אוטומטיים ומרכזייה וירטואלית בענן — הכל בפלטפורמה אחת.
+              מרכזייה עסקית מתקדמת עם ניהול נציגים, סיכומי שיחה ו-AI מובנה — יחד עם
+              CRM, אינטגרציות וקמפיינים אוטומטיים בפלטפורמה אחת.
             </p>
           </div>
 

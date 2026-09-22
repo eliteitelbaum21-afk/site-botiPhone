@@ -14,18 +14,18 @@ export interface ContactContext {
 }
 
 export const DEFAULT_CONTACT_CONTEXT: ContactContext = {
-  intent: "demo",
+  intent: "contact",
   title: "בואו נדבר",
-  subtitle: "השאירו פרטים ונחזור אליכם עם הדגמה חינם",
+  subtitle: "השאירו פרטים ונציג יחזור אליכם",
   source: "modal",
-  submitLabel: "קבלו הדגמה בחינם",
-  successMessage: "נציג שלנו יחזור אליכם בהקדם לתיאום הדגמה.",
+  submitLabel: "שליחת פרטים",
+  successMessage: "קיבלנו את פנייתכם. נחזור אליכם בהקדם.",
 };
 
 export function buildContactContext(
   partial: Partial<ContactContext> & { intent?: LeadIntent }
 ): ContactContext {
-  const intent = partial.intent ?? "demo";
+  const intent = partial.intent ?? "contact";
 
   if (intent === "plan" && partial.plan) {
     const planLabel = partial.planName ?? partial.plan;
@@ -42,25 +42,13 @@ export function buildContactContext(
     };
   }
 
-  if (intent === "contact") {
-    return {
-      ...DEFAULT_CONTACT_CONTEXT,
-      ...partial,
-      intent: "contact",
-      title: "יצירת קשר",
-      subtitle: "השאירו פרטים ונציג יחזור אליכם",
-      submitLabel: "שליחת פרטים",
-      successMessage: "קיבלנו את פנייתכם. נחזור אליכם בהקדם.",
-    };
-  }
-
   return {
     ...DEFAULT_CONTACT_CONTEXT,
     ...partial,
-    intent: "demo",
-    title: partial.title ?? "בקשת הדגמה",
-    subtitle: partial.subtitle ?? "השאירו פרטים ונתאם הדגמה חינם",
-    submitLabel: partial.submitLabel ?? "קבלו הדגמה בחינם",
-    successMessage: partial.successMessage ?? "נציג שלנו יחזור אליכם בהקדם לתיאום הדגמה.",
+    intent: "contact",
+    title: partial.title ?? "יצירת קשר",
+    subtitle: partial.subtitle ?? "השאירו פרטים ונציג יחזור אליכם",
+    submitLabel: partial.submitLabel ?? "שליחת פרטים",
+    successMessage: partial.successMessage ?? "קיבלנו את פנייתכם. נחזור אליכם בהקדם.",
   };
 }

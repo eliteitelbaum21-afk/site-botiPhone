@@ -108,7 +108,7 @@ export default function BlogIndexPage() {
 
       <CtaSection
         title="מעדיפים לדבר במקום לקרוא?"
-        subtitle="השאירו פרטים ונדגים לכם את הכל בשיחה אחת — עם הבוט עצמו."
+        subtitle="השאירו פרטים ונחזור אליכם בהקדם — בלי מצגות ארוכות."
       />
     </>
   );

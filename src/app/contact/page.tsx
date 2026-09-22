@@ -7,13 +7,13 @@ import { buildContactContext } from "@/lib/contact-context";
 import { absoluteUrl, site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "צור קשר — הדגמה חינם של הבוט הטלפוני",
+  title: "צור קשר — BotiPhone",
   description:
-    "השאירו פרטים ונחזור אליכם תוך 24 שעות עם הדגמה חיה של הבוט הטלפוני, הקמפיינים האוטומטיים והמרכזיה בענן של BotiPhone.",
+    "השאירו פרטים ונחזור אליכם תוך 24 שעות בנוגע למרכזייה בענן, סוכני AI והקמפיינים של BotiPhone.",
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "צור קשר | BotiPhone",
-    description: "השאירו פרטים להדגמה חינם של הבוט הטלפוני והמרכזיה בענן.",
+    description: "השאירו פרטים ונציג יחזור אליכם בנוגע למרכזייה העסקית והמערכת של BotiPhone.",
     url: absoluteUrl("/contact"),
   },
 };
@@ -42,9 +42,8 @@ export default function ContactPage() {
               </Reveal>
               <Reveal delay={0.1}>
                 <p className="text-lg md:text-xl text-gray-400 mb-10 leading-relaxed">
-                  השאירו פרטים ונחזור אליכם תוך 24 שעות — ואם תרצו, הבוט עצמו יתקשר
-                  אליכם להדגמה חיה. בלי התחייבות, בלי מצגות ארוכות. רק שיחה אחת שתראה
-                  לכם מה אפשרי.
+                  השאירו פרטים ונחזור אליכם תוך 24 שעות. בלי התחייבות — רק שיחה אחת
+                  שתעזור לנו להבין מה מתאים לעסק שלכם.
                 </p>
               </Reveal>
 
@@ -98,7 +97,7 @@ export default function ContactPage() {
               <div className="glass-panel rounded-3xl p-8 md:p-10 border border-white/10 relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-primary via-brand-accent to-brand-secondary" />
                 <h2 className="text-2xl font-bold mb-2">השאירו פרטים</h2>
-                <p className="text-gray-400 mb-8">נחזור אליכם עם הדגמה מותאמת לעסק שלכם.</p>
+                <p className="text-gray-400 mb-8">נחזור אליכם בהקדם עם מענה מותאם לעסק שלכם.</p>
                 <ContactForm
                   {...buildContactContext({
                     intent: "contact",

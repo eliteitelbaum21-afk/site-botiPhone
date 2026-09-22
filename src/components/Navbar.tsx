@@ -8,9 +8,9 @@ import { useContactModal } from "./ContactModalProvider";
 import { site } from "@/lib/site";
 
 const navLinks = [
-  { href: "/voice-bot", label: "בוט טלפוני" },
-  { href: "/campaigns", label: "קמפיינים יוצאים" },
   { href: "/cloud-pbx", label: "מרכזיה בענן" },
+  { href: "/voice-bot", label: "סוכני AI" },
+  { href: "/campaigns", label: "קמפיינים יוצאים" },
   { href: "/pricing", label: "מחירון" },
   { href: "/blog", label: "מרכז ידע" },
 ];
@@ -64,10 +64,10 @@ export default function Navbar() {
               כניסה למערכת
             </a>
             <button
-              onClick={() => openModal({ intent: "demo", source: "navbar" })}
+              onClick={() => openModal({ intent: "contact", source: "navbar" })}
               className="bg-white text-brand-dark px-6 py-2.5 rounded-full font-bold hover:bg-gray-100 transition-all hover:scale-105 shadow-[0_0_15px_rgba(255,255,255,0.3)]"
             >
-              הדגמה חינם
+              דברו עם מומחה
             </button>
           </div>
 
@@ -179,7 +179,7 @@ export default function Navbar() {
             <button
               onClick={() => {
                 setIsOpen(false);
-                openModal({ intent: "demo", source: "navbar-mobile" });
+                openModal({ intent: "contact", source: "navbar-mobile" });
               }}
               style={{
                 width: "100%",
@@ -193,7 +193,7 @@ export default function Navbar() {
                 cursor: "pointer",
               }}
             >
-              הדגמה חינם
+              דברו עם מומחה
             </button>
           </div>
         </div>

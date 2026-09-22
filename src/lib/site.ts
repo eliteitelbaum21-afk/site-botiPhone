@@ -2,9 +2,9 @@ export const site = {
   name: "BotiPhone",
   legalName: "BotiPhone Management",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.botiphone.com",
-  tagline: "בוט טלפוני חכם, קמפיינים אוטומטיים ומרכזיה בענן",
+  tagline: "מרכזייה עסקית חכמה עם AI מובנה",
   description:
-    "BotiPhone — בוט טלפוני מבוסס AI שעונה לשיחות 24/6, קמפיין שיחות אוטומטי שמחייג לאלפי לידים, ומרכזיה בענן מתקדמת לעסק. הדגמה חינם.",
+    "BotiPhone — מרכזייה בענן מתקדמת עם ניהול נציגים, סיכום שיחה למייל ו-AI שמנתח שיחות עם הקשר מהעבר. כולל CRM, אינטגרציות, סוכני AI וקמפיינים אוטומטיים.",
   phone: "03-9306454",
   phoneIntl: "+97239306454",
   whatsapp: "972527686857",

@@ -34,13 +34,10 @@ export default function ServiceHero({ badge, title, description, visual }: Servi
               </p>
             </Reveal>
             <Reveal delay={0.3}>
-              <div className={`flex flex-col sm:flex-row gap-4 ${visual ? "" : "justify-center"}`}>
-                <CtaButton variant="primary" className="w-full sm:w-auto" intent="demo" source="service-hero">
-                  קבלו הדגמה חינם
-                  <ArrowLeft className="w-5 h-5" />
-                </CtaButton>
-                <CtaButton variant="secondary" className="w-full sm:w-auto" intent="contact" source="service-hero">
+              <div className={`flex ${visual ? "" : "justify-center"}`}>
+                <CtaButton variant="primary" className="w-full sm:w-auto" intent="contact" source="service-hero">
                   דברו עם מומחה
+                  <ArrowLeft className="w-5 h-5" />
                 </CtaButton>
               </div>
             </Reveal>

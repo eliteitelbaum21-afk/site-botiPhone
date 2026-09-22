@@ -7,7 +7,7 @@ export default function FloatingCta() {
   return (
     <div className="fixed bottom-5 left-5 z-40 flex flex-col gap-3">
       <a
-        href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("היי, אשמח לשמוע על הבוט הטלפוני של BotiPhone")}`}
+        href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("היי, אשמח לשמוע על המרכזייה והמערכת של BotiPhone")}`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="שיחה בוואטסאפ"

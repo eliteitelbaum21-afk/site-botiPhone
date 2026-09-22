@@ -27,7 +27,7 @@ export default function CtaButton({
   children,
   variant = "primary",
   className = "",
-  intent = "demo",
+  intent = "contact",
   plan,
   planName,
   planPrice,

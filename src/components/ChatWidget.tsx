@@ -175,7 +175,7 @@ export default function ChatWidget() {
         {/* Quick actions — shown before any user message */}
         {messages.length === 1 && (
           <div className="px-3 pb-1 flex flex-wrap gap-2">
-            {["מה זה בוט טלפוני?", "כמה עולה המרכזיה?", "רוצה הדגמה"].map((q) => (
+            {["מה כוללת המרכזייה?", "כמה עולה?", "רוצה שיחזרו אליי"].map((q) => (
               <button
                 key={q}
                 onClick={() => sendMessage(q)}

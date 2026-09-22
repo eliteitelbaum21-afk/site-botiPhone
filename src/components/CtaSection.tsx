@@ -7,8 +7,8 @@ interface CtaSectionProps {
 }
 
 export default function CtaSection({
-  title = "מוכנים להכפיל את כמות הלידים?",
-  subtitle = "הצטרפו למאות עסקים שכבר עברו לבוט טלפוני חכם וקמפיינים אוטומטיים. תנו ל-AI לעבוד בשבילכם.",
+  title = "מוכנים לשדרג את התקשורת בעסק?",
+  subtitle = "מרכזייה יציבה עם ניהול נציגים מתקדם, סיכומי שיחה ו-AI מובנה — בפלטפורמה אחת. דברו איתנו ונחזור אליכם בהקדם.",
 }: CtaSectionProps) {
   return (
     <section className="py-24 relative overflow-hidden">
@@ -18,11 +18,8 @@ export default function CtaSection({
           <div className="text-center glass-panel p-8 md:p-12 rounded-3xl border border-white/20">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">{title}</h2>
             <p className="text-lg md:text-xl text-gray-300 mb-10">{subtitle}</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <CtaButton variant="white" intent="demo" source="cta-section">
-                קבלו הדגמה חינם
-              </CtaButton>
-              <CtaButton variant="secondary" intent="contact" source="cta-section">
+            <div className="flex justify-center">
+              <CtaButton variant="white" intent="contact" source="cta-section">
                 דברו עם מומחה
               </CtaButton>
             </div>

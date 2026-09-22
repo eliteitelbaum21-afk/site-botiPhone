@@ -1,12 +1,12 @@
-import { ArrowLeft, Bot, Zap } from "lucide-react";
+import { ArrowLeft, Bot, Headphones, Mail } from "lucide-react";
 import CtaButton from "@/components/CtaButton";
 import Reveal from "@/components/Reveal";
 
-const campaigns = [
-  { name: "לידים פייסבוק", progress: 85, color: "bg-blue-500" },
-  { name: "לקוחות עבר", progress: 45, color: "bg-purple-500" },
-  { name: "תיאום פגישות", progress: 92, color: "bg-green-500" },
-  { name: "סקר שביעות רצון", progress: 30, color: "bg-yellow-500" },
+const agents = [
+  { name: "שלוחה 101 — מכירות", status: "פנוי", color: "bg-green-400" },
+  { name: "שלוחה 102 — שירות", status: "בשיחה", color: "bg-yellow-400" },
+  { name: "שלוחה AI — סינון", status: "פעיל", color: "bg-brand-accent" },
+  { name: "תור כללי", status: "3 ממתינים", color: "bg-blue-400" },
 ];
 
 export default function Hero() {
@@ -21,7 +21,7 @@ export default function Hero() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm">
               <span className="flex h-2 w-2 rounded-full bg-green-400 animate-pulse" />
               <span className="text-sm font-medium text-gray-300">
-                הדור הבא של שירות הלקוחות והמכירות
+                מרכזייה עסקית עם שכבת AI מובנית
               </span>
             </div>
           </Reveal>
@@ -35,26 +35,20 @@ export default function Hero() {
 
           <Reveal delay={0.2}>
             <p className="text-lg sm:text-xl md:text-2xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed">
-              ניהול מלא של התקשורת הטלפונית בארגון מממשק אחד פשוט. קבלו שליטה עצמאית
-              בשלוחות, תפריטי ניתוב ותורי המתנה, ללא צורך בהתערבות טכנית, ושלבו יכולות
-              CRM ו-AI בקצב שלכם.
+              כל התקשורת העסקית במקום אחד: מרכזייה, נציגים, לקוחות, קמפיינים וסוכני AI.
             </p>
           </Reveal>
 
           <Reveal delay={0.3}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <CtaButton variant="primary" className="w-full sm:w-auto" intent="demo" source="hero">
-                התחילו עכשיו
+            <div className="flex justify-center">
+              <CtaButton variant="primary" className="w-full sm:w-auto" intent="contact" source="hero">
+                דברו עם מומחה
                 <ArrowLeft className="w-5 h-5" />
-              </CtaButton>
-              <CtaButton variant="secondary" className="w-full sm:w-auto" intent="demo" source="hero-demo">
-                לתיאום הדגמה
               </CtaButton>
             </div>
           </Reveal>
         </div>
 
-        {/* Dashboard mockup */}
         <Reveal delay={0.35} y={48}>
           <div className="mt-20 relative mx-auto max-w-5xl">
             <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent z-10 pointer-events-none" />
@@ -66,48 +60,40 @@ export default function Hero() {
               </div>
               <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6 opacity-90">
                 <div className="col-span-1 md:col-span-2 space-y-6">
-                  <div className="h-40 rounded-xl bg-white/5 border border-white/5 flex items-end p-4 gap-2 relative overflow-hidden">
-                    <div className="absolute top-4 right-4 text-sm text-gray-400">
-                      שיחות יוצאות (קמפיינים)
-                    </div>
-                    {[40, 70, 45, 90, 65, 85, 100, 55].map((h, i) => (
-                      <div
-                        key={i}
-                        className="w-full bg-brand-primary/50 rounded-t-sm hover:bg-brand-primary transition-colors"
-                        style={{ height: `${h}%` }}
-                      />
-                    ))}
-                  </div>
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="h-24 rounded-xl bg-white/5 border border-white/5 p-4 flex flex-col justify-center">
+                    <div className="h-28 rounded-xl bg-white/5 border border-white/5 p-4 flex flex-col justify-center">
                       <div className="text-gray-400 text-sm mb-1 flex items-center gap-2">
-                        <Bot className="w-4 h-4 text-brand-accent" /> שיחות בוט פעילות
+                        <Headphones className="w-4 h-4 text-brand-primary" /> נציגים פעילים
                       </div>
-                      <div className="text-3xl font-bold text-white">1,248</div>
+                      <div className="text-3xl font-bold text-white">12 / 18</div>
                     </div>
-                    <div className="h-24 rounded-xl bg-white/5 border border-white/5 p-4 flex flex-col justify-center">
+                    <div className="h-28 rounded-xl bg-white/5 border border-white/5 p-4 flex flex-col justify-center">
                       <div className="text-gray-400 text-sm mb-1 flex items-center gap-2">
-                        <Zap className="w-4 h-4 text-yellow-400" /> לידים חמים שאותרו
+                        <Mail className="w-4 h-4 text-brand-accent" /> סיכומים שנשלחו היום
                       </div>
-                      <div className="text-3xl font-bold text-brand-accent">342</div>
+                      <div className="text-3xl font-bold text-brand-accent">186</div>
                     </div>
+                  </div>
+                  <div className="rounded-xl bg-white/5 border border-white/5 p-4">
+                    <div className="text-gray-400 text-sm mb-3 flex items-center gap-2">
+                      <Bot className="w-4 h-4 text-brand-secondary" /> ניתוח AI — שיחה אחרונה
+                    </div>
+                    <p className="text-sm text-gray-300 leading-relaxed">
+                      הלקוח חזר בנושא החשבונית מאתמול. זוהתה אי-שביעות רצון קלה —
+                      הומלץ לנציג לפתוח בתיקון ולבדוק זיכוי. סיכום נשלח למייל המנהל.
+                    </p>
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div className="h-full rounded-xl bg-white/5 border border-white/5 p-4">
-                    <div className="text-gray-400 text-sm mb-4">סטטוס קמפיינים</div>
-                    {campaigns.map((camp, i) => (
-                      <div key={i} className="mb-4">
-                        <div className="flex justify-between text-xs mb-1">
-                          <span className="text-gray-300">{camp.name}</span>
-                          <span className="text-gray-500">{camp.progress}%</span>
+                    <div className="text-gray-400 text-sm mb-4">סטטוס שלוחות ונציגים</div>
+                    {agents.map((agent, i) => (
+                      <div key={i} className="mb-4 last:mb-0 flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-2 min-w-0">
+                          <span className={`w-2 h-2 rounded-full flex-shrink-0 ${agent.color}`} />
+                          <span className="text-xs text-gray-300 truncate">{agent.name}</span>
                         </div>
-                        <div className="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
-                          <div
-                            className={`h-full ${camp.color} rounded-full`}
-                            style={{ width: `${camp.progress}%` }}
-                          />
-                        </div>
+                        <span className="text-xs text-gray-500 flex-shrink-0">{agent.status}</span>
                       </div>
                     ))}
                   </div>

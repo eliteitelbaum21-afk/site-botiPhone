@@ -1,27 +1,27 @@
-import { PhoneCall, Settings2, TrendingUp } from "lucide-react";
+import { Network, Sparkles, BarChart3 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 const steps = [
   {
-    icon: <Settings2 className="w-8 h-8 text-brand-primary" />,
+    icon: <Network className="w-8 h-8 text-brand-primary" />,
     step: "01",
-    title: "מגדירים את התסריט",
+    title: "מגדירים את המרכזייה",
     description:
-      "בונים יחד איתכם את עץ השיחה: פתיחה, שאלות סינון, ניתובים וסיומים — מותאם בדיוק לעסק שלכם.",
+      "שלוחות, תורים, ניתובים וזמני פעילות — הכל מממשק אחד, בלי טכנאי ובלי חומרה במשרד.",
   },
   {
-    icon: <PhoneCall className="w-8 h-8 text-brand-secondary" />,
+    icon: <Sparkles className="w-8 h-8 text-brand-secondary" />,
     step: "02",
-    title: "הבוט מתחיל לדבר",
+    title: "הנציגים וה-AI עובדים יחד",
     description:
-      "מענה לשיחות נכנסות וחיוג יזום ללידים. הבוט מבין דיבור חופשי בעברית ומנהל שיחה טבעית.",
+      "ניהול נציגים מתקדם לצד סוכני AI שעונים, מסננים ומעבירים שיחות — עם כרטיס לקוח והקשר מלא.",
   },
   {
-    icon: <TrendingUp className="w-8 h-8 text-brand-accent" />,
+    icon: <BarChart3 className="w-8 h-8 text-brand-accent" />,
     step: "03",
-    title: "אתם מקבלים לידים חמים",
+    title: "רואים הכל בזמן אמת",
     description:
-      "כל שיחה מתועדת, מתומללת ומדורגת. לידים חמים מועברים מיד לנציג — והדוחות מתעדכנים בזמן אמת.",
+      "סיכום שיחה למייל, תמלול, ניתוח AI עם היסטוריית השיחות הקודמות, ודוחות שמנהלים מוקד באמת.",
   },
 ];
 
@@ -34,7 +34,7 @@ export default function HowItWorks() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">איך זה עובד?</h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              משאירים פרטים היום — והבוט הטלפוני שלכם באוויר תוך ימים בודדים.
+              מרכזייה יציבה באוויר תוך ימים — עם AI שמחזק את הנציגים, לא מחליף את השליטה שלכם.
             </p>
           </div>
         </Reveal>

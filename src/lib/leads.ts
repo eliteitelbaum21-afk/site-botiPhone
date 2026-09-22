@@ -20,7 +20,7 @@ export interface LeadPayload {
 }
 
 const INTENT_LABELS: Record<LeadIntent, string> = {
-  demo: "בקשת הדגמה",
+  demo: "יצירת קשר",
   contact: "יצירת קשר",
   plan: "בחירת חבילה",
   chat: "פנייה מהצ'אט",
