@@ -5,9 +5,11 @@ import { absoluteUrl } from "@/lib/site";
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: absoluteUrl("/"), changeFrequency: "weekly", priority: 1 },
+    { url: absoluteUrl("/cloud-pbx"), changeFrequency: "monthly", priority: 0.9 },
+    { url: absoluteUrl("/crm"), changeFrequency: "monthly", priority: 0.9 },
+    { url: absoluteUrl("/api-integrations"), changeFrequency: "monthly", priority: 0.9 },
     { url: absoluteUrl("/voice-bot"), changeFrequency: "monthly", priority: 0.9 },
     { url: absoluteUrl("/campaigns"), changeFrequency: "monthly", priority: 0.9 },
-    { url: absoluteUrl("/cloud-pbx"), changeFrequency: "monthly", priority: 0.9 },
     { url: absoluteUrl("/pricing"), changeFrequency: "monthly", priority: 0.8 },
     { url: absoluteUrl("/blog"), changeFrequency: "weekly", priority: 0.7 },
     { url: absoluteUrl("/contact"), changeFrequency: "yearly", priority: 0.6 },

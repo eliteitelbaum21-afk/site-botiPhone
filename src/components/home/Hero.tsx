@@ -28,26 +28,27 @@ export default function Hero() {
 
           <Reveal delay={0.1}>
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 leading-tight">
-              בוט טלפוני חכם <br className="hidden md:block" />
-              <span className="text-gradient">וקמפיינים אוטומטיים לעסק שלך</span>
+              תקשורת חכמה לעסק:{" "}
+              <span className="text-gradient">המרכזייה היציבה שגדלה יחד איתכם</span>
             </h1>
           </Reveal>
 
           <Reveal delay={0.2}>
             <p className="text-lg sm:text-xl md:text-2xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed">
-              תנו ל-AI לענות לכל שיחה נכנסת 24/6, להוציא אלפי שיחות יזומות ללידים במקביל,
-              ולנהל את כל התקשורת העסקית שלכם על גבי מרכזיה בענן — בפלטפורמה אחת.
+              ניהול מלא של התקשורת הטלפונית בארגון מממשק אחד פשוט. קבלו שליטה עצמאית
+              בשלוחות, תפריטי ניתוב ותורי המתנה, ללא צורך בהתערבות טכנית, ושלבו יכולות
+              CRM ו-AI בקצב שלכם.
             </p>
           </Reveal>
 
           <Reveal delay={0.3}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <CtaButton variant="primary" className="w-full sm:w-auto" intent="demo" source="hero">
-                התחילו ניסיון חינם
+                התחילו עכשיו
                 <ArrowLeft className="w-5 h-5" />
               </CtaButton>
-              <CtaButton variant="secondary" className="w-full sm:w-auto" intent="contact" source="hero">
-                דברו עם מומחה
+              <CtaButton variant="secondary" className="w-full sm:w-auto" intent="demo" source="hero-demo">
+                לתיאום הדגמה
               </CtaButton>
             </div>
           </Reveal>
