@@ -1,62 +1,63 @@
 import type { Metadata } from "next";
-import {
-  BrainCircuit,
-  Headphones,
-  Mail,
-  MessageSquareText,
-  PhoneOutgoing,
-  ShieldCheck,
-  Sparkles,
-  Users,
-  Zap,
-} from "lucide-react";
 import Hero from "@/components/home/Hero";
-import FeaturesGrid from "@/components/home/FeaturesGrid";
 import HowItWorks from "@/components/home/HowItWorks";
-import FeatureShowcase from "@/components/home/FeatureShowcase";
 import {
-  CampaignsVisual,
-  PbxVisual,
-  VoiceBotVisual,
-} from "@/components/home/ShowcaseVisuals";
-import Testimonials from "@/components/home/Testimonials";
+  ExamplesPreview,
+  InnovationSection,
+  MigrationBanner,
+  PbxBasics,
+  TwoPaths,
+} from "@/components/home/HomeSections";
 import BlogPreview from "@/components/home/BlogPreview";
+import TrustBar from "@/components/home/TrustBar";
+import ClientLogos from "@/components/home/ClientLogos";
+import TestimonialsSection from "@/components/home/TestimonialsSection";
 import FaqSection from "@/components/FaqSection";
 import CtaSection from "@/components/CtaSection";
 import { site } from "@/lib/site";
 
+const homeTitle = `מרכזייה לעסק בענן — הדור הבא של המרכזיות | ${site.name}`;
+const homeDescription =
+  "מרכזייה לעסק בענן: מרכזייה טלפונית עם תפריט קולי, שלוחות, נציגים והקלטות, ונציג דיגיטלי שעונה בעברית. מרכזיה לעסק בלי חומרה, עם המספר הקיים. מרכזיית טלפון שעולה לאוויר תוך ימים.";
+
 export const metadata: Metadata = {
-  title: `תקשורת חכמה לעסק — מרכזייה, CRM ו-AI | ${site.name}`,
-  description:
-    "מרכזייה עסקית מתקדמת עם ניהול נציגים, סיכום שיחה למייל ו-AI שמנתח שיחות עם הקשר מהעבר — יחד עם CRM, אינטגרציות וסוכני AI בפלטפורמה אחת.",
+  title: { absolute: homeTitle },
+  description: homeDescription,
   alternates: { canonical: "/" },
+  openGraph: { title: homeTitle, description: homeDescription, url: site.url },
+  twitter: { title: homeTitle, description: homeDescription },
 };
 
 const homeFaq = [
   {
-    question: "מה כוללת המרכזייה בענן של BotiPhone?",
+    question: "מה זה מרכזייה לעסק בענן?",
     answer:
-      "מרכזייה וירטואלית מלאה: שלוחות, תפריטי ניתוב, תורי המתנה, ניהול נציגים מתקדם, הקלטות, סיכום שיחה אוטומטי למייל ו-AI שמנתח שיחות עם ההקשר מהשיחות הקודמות של הלקוח — הכל מממשק אחד, בלי חומרה ובלי טכנאי.",
+      "מרכזייה בענן (מרכזייה וירטואלית) עושה את כל מה שמרכזייה רגילה עושה: מספר לעסק, פתיח ותפריט קולי, שלוחות לעובדים, תור המתנה והקלטות. ההבדל הוא שהיא לא יושבת בארון במשרד אלא בשרתים מאובטחים, ומנהלים אותה מהדפדפן.",
   },
   {
-    question: "איך ה-AI משתלב במרכזייה?",
+    question: "אפשר לשמור על המספר שיש לנו היום?",
     answer:
-      "ה-AI הוא שכבה מובנית בתוך המרכזייה: סוכנים שעונים ומסננים שיחות, ניתוח וסיכום אחרי כל שיחה, ובקרת איכות לנציגים. אפשר להתחיל ממרכזייה קלאסית ולהפעיל יכולות AI לפי הצורך — בלי להחליף מערכת.",
+      "כן. מניידים את המספר הקיים, גם ממרכזייה של בזק או מכל ספק אחר. עד שהניוד מסתיים המרכזייה הקיימת ממשיכה לעבוד, כך שאין השבתה.",
   },
   {
-    question: "כמה זמן לוקח להקים?",
+    question: "אנחנו צריכים רק מרכזייה רגילה. חייבים AI?",
     answer:
-      "ברוב המקרים ימים בודדים. מגדירים יחד שלוחות וניתובים, מחברים מספרים ונציגים — והמערכת באוויר. אין צורך בחומרה, בטכנאים או בהתקנות במשרד.",
+      "ממש לא. אפשר לעבוד עם מרכזייה פשוטה: תפריט, שלוחות, נציגים, הקלטות ודוחות. היכולות החכמות, כמו בוט קולי וקמפיינים, נשארות כבויות עד שתחליטו להפעיל אותן.",
   },
   {
-    question: "האם המערכת מתחברת ל-CRM שלי?",
+    question: "כמה זמן לוקחת ההקמה?",
     answer:
-      "כן. יש API פתוח ואינטגרציות: פרטי הלקוח קופצים לנציג עם תחילת השיחה, סיכומים והקלטות נשמרים בהיסטוריה, ואפשר למשוך ולעדכן נתונים במערכות חיצוניות תוך כדי השיחה.",
+      "ברוב המקרים ימים בודדים. אנחנו מקימים יחד איתכם את התפריט, השלוחות והנציגים, בודקים, ורק אז מעבירים את המספר.",
   },
   {
-    question: "כמה עולה השירות?",
+    question: "מאיפה העובדים עונים לשיחות?",
     answer:
-      "למרכזיה בענן ולמענה נכנס נבנית הצעת מחיר מותאמת. חבילות הקמפיינים היוצאים עם בוט AI מתחילות מ-1,000 ₪. פרטים מלאים בעמוד המחירון.",
+      "מטלפון שולחני, מטלפון בדפדפן, מהנייד או מהאפליקציה. העובד יכול לענות מהבית עם המספר של העסק.",
+  },
+  {
+    question: "אפשר לנסות את המערכת?",
+    answer:
+      "כן. הניסיון מתחיל בשיחה עם נציג: משאירים פרטים באתר, או מתקשרים, ועוברים יחד על מה שמתאים לעסק.",
   },
 ];
 
@@ -64,96 +65,20 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <FeaturesGrid />
+      <TrustBar />
+      <ClientLogos />
+      <PbxBasics />
+      <TwoPaths />
+      <MigrationBanner />
+      <InnovationSection />
+      <ExamplesPreview />
+      <TestimonialsSection />
       <HowItWorks />
-
-      <FeatureShowcase
-        subtitle="מרכזיה בענן מתקדמת"
-        title="שליטה מלאה על כל שיחה בארגון"
-        description="מרכזייה וירטואלית עם שלוחות, תורים וניהול נציגים — ו-AI שמסכם שיחות, מנתח אותן עם הקשר מהעבר ומחזק את המוקד בזמן אמת."
-        bullets={[
-          {
-            icon: <Headphones className="text-brand-primary" />,
-            title: "ניהול נציגים מתקדם",
-            desc: "זמינות, תורים, הרשאות וביצועים — הכל מממשק אחד.",
-          },
-          {
-            icon: <Mail className="text-brand-accent" />,
-            title: "סיכום שיחה למייל",
-            desc: "בסוף כל שיחה נשלח סיכום ברור למנהל או לנציג.",
-          },
-          {
-            icon: <Sparkles className="text-brand-secondary" />,
-            title: "AI עם הקשר מהעבר",
-            desc: "ניתוח שיחה שמסתמך גם על שיחות קודמות של אותו לקוח.",
-          },
-        ]}
-        visual={<PbxVisual />}
-        imageSide="right"
-        href="/cloud-pbx"
-        linkLabel="לעמוד המרכזיה בענן"
-      />
-
-      <FeatureShowcase
-        subtitle="סוכני AI (Inbound)"
-        title='הסוף לתפריטי "הקש 1"'
-        description="הלקוח מתקשר והסוכן הווירטואלי עונה מיד. הוא מבין שפה טבעית, קובע פגישות, מספק מידע, ומנתב שיחות מורכבות לנציג אנושי רק כשבאמת צריך."
-        bullets={[
-          {
-            icon: <MessageSquareText className="text-brand-accent" />,
-            title: "הבנת דיבור חופשי בעברית",
-            desc: "זיהוי כוונת הלקוח וניהול שיחה זורמת ואנושית.",
-          },
-          {
-            icon: <ShieldCheck className="text-brand-primary" />,
-            title: "זמינות 24/6",
-            desc: "העסק שלכם זמין מסביב לשעון, בלי זמני המתנה ארוכים.",
-          },
-          {
-            icon: <Users className="text-brand-secondary" />,
-            title: "סינון וסיווג חכם",
-            desc: "רק פניות רלוונטיות מגיעות לנציגים — חיסכון אדיר בזמן.",
-          },
-        ]}
-        visual={<VoiceBotVisual />}
-        imageSide="left"
-        href="/voice-bot"
-        linkLabel="לעמוד סוכני ה-AI"
-      />
-
-      <FeatureShowcase
-        subtitle="קמפיין שיחות אוטומטי (Outbound)"
-        title="AI שמחייג, מוכר ומעביר לידים חמים"
-        description="המערכת מחייגת לאלפי לידים במקביל, מנהלת שיחת סינון טבעית, ומעבירה לנציג המכירות רק לקוחות שמוכנים לקנות."
-        bullets={[
-          {
-            icon: <PhoneOutgoing className="text-brand-primary" />,
-            title: "חיוג אוטומטי המוני",
-            desc: "אלפי שיחות בשעה, עם ניהול חכם של ערוצים וספקים.",
-          },
-          {
-            icon: <BrainCircuit className="text-brand-secondary" />,
-            title: "טיוב לידים אוטומטי",
-            desc: "הבוט שואל שאלות סינון ומזהה את רמת העניין של הלקוח.",
-          },
-          {
-            icon: <Zap className="text-brand-accent" />,
-            title: "העברה חמה לנציג",
-            desc: "ברגע שהלקוח מביע עניין — השיחה עוברת מיד לנציג פנוי.",
-          },
-        ]}
-        visual={<CampaignsVisual />}
-        imageSide="right"
-        href="/campaigns"
-        linkLabel="לעמוד הקמפיינים"
-      />
-
-      <Testimonials />
       <BlogPreview />
-      <FaqSection items={homeFaq} />
+      <FaqSection items={homeFaq} title="שאלות נפוצות על מרכזייה לעסק" />
       <CtaSection
-        title="מוכנים לשדרג את התקשורת בעסק?"
-        subtitle="מרכזייה יציבה, ניהול נציגים מתקדם ו-AI שמבין את הלקוח — בפלטפורמה אחת. דברו איתנו ונבנה הצעה שמתאימה לעסק שלכם."
+        title="בואו נבנה לכם מרכזייה"
+        subtitle="השאירו פרטים או התקשרו. ניסיון מתחיל בשיחה עם נציג."
       />
     </>
   );

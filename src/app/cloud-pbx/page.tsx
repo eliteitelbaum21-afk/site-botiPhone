@@ -17,6 +17,7 @@ import {
 import ServiceHero from "@/components/ServiceHero";
 import { PbxVisual } from "@/components/home/ShowcaseVisuals";
 import FaqSection from "@/components/FaqSection";
+import VideoSection from "@/components/VideoSection";
 import CtaSection from "@/components/CtaSection";
 import Reveal from "@/components/Reveal";
 import JsonLd from "@/components/JsonLd";
@@ -25,25 +26,25 @@ import { absoluteUrl, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "מרכזיה בענן לעסק — מרכזייה וירטואלית חכמה עם AI",
   description:
-    "מרכזיה בענן מתקדמת לעסק: שלוחות, תורים, הקלטות, IVR חכם ושלוחות AI — בלי חומרה ובלי טכנאים. מרכזייה וירטואלית שעולה לאוויר תוך ימים.",
+    "מרכזיה בענן לעסק (Cloud PBX): מרכזייה וירטואלית עם שלוחות, תורים, הקלטות ושלוחות AI, בלי חומרה ובלי טכנאי. טלפוניה בענן ומרכזיית IP שעולה לאוויר תוך ימים.",
   alternates: { canonical: "/cloud-pbx" },
   openGraph: {
     title: "מרכזיה בענן לעסק | BotiPhone",
     description:
-      "מרכזייה וירטואלית מלאה בענן: שלוחות, תורים, הקלטות, דוחות ושלוחות AI חכמות.",
+      "מרכזייה וירטואלית מלאה בענן: שלוחות, תורים, הקלטות, דוחות ושלוחות AI. טלפוניה בענן בלי חומרה.",
     url: absoluteUrl("/cloud-pbx"),
   },
 };
 
 const features = [
   {
-    icon: <Network className="w-7 h-7 text-brand-primary" />,
+    icon: <Network className="w-7 h-7 text-brand-accent" />,
     title: "שלוחות ועצי ניתוב",
     description:
       "עצי שלוחות גמישים ללא הגבלה: תפריטים, ניתובים לפי שעות פעילות, שלוחות אישיות וקבוצות צלצול.",
   },
   {
-    icon: <Headphones className="w-7 h-7 text-brand-secondary" />,
+    icon: <Headphones className="w-7 h-7 text-brand-accent" />,
     title: "ניהול מוקד ונציגים",
     description:
       "תורי המתנה חכמים, ניהול נציגים מתקדם, מוזיקת המתנה והודעות מותאמות — כל מה שמוקד מקצועי צריך.",
@@ -55,19 +56,19 @@ const features = [
       "כל שיחה מוקלטת ומתומללת אוטומטית. בסוף השיחה נשלח סיכום ברור למייל — עם חיפוש בטקסט והאזנה מהדפדפן.",
   },
   {
-    icon: <BarChart3 className="w-7 h-7 text-pink-500" />,
+    icon: <BarChart3 className="w-7 h-7 text-brand-accent" />,
     title: "דוחות וניתוח AI",
     description:
       "דשבורד חי לביצועי נציגים — ו-AI שמנתח כל שיחה עם ההקשר מהשיחות הקודמות של אותו לקוח.",
   },
   {
-    icon: <Plug className="w-7 h-7 text-green-400" />,
+    icon: <Plug className="w-7 h-7 text-brand-accent" />,
     title: "API פתוח ו-CRM Pop-up",
     description:
       "פרטי הלקוח קופצים לנציג עם תחילת השיחה. משיכת נתונים ועדכון מערכות חיצוניות בכל שלב בשיחה.",
   },
   {
-    icon: <Smartphone className="w-7 h-7 text-yellow-400" />,
+    icon: <Smartphone className="w-7 h-7 text-brand-accent" />,
     title: "עבודה מכל מקום",
     description:
       "שלוחה בנייד, במחשב או בטלפון IP — הנציגים עובדים מהמשרד או מהבית עם אותו מספר עסקי.",
@@ -158,7 +159,7 @@ export default function CloudPbxPage() {
               <h2 className="text-3xl md:text-5xl font-bold mb-4">
                 כל היכולות של מרכזייה לעסק — ועוד
               </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-brand-primary to-brand-secondary mx-auto rounded-full" />
+              <div className="w-24 h-1 bg-gradient-to-r from-brand-primary to-brand-accent mx-auto rounded-full" />
             </div>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -186,7 +187,8 @@ export default function CloudPbxPage() {
                 מרכזייה פיזית ישנה מול מרכזיה בענן
               </h2>
               <p className="text-gray-400 text-lg">
-                למה אלפי עסקים בישראל עוברים למרכזייה וירטואלית?
+                למה עסקים עוברים למרכזייה וירטואלית?{" "}
+                <Link href="/pbx-migration" className="text-brand-accent hover:underline">איך עובר המעבר</Link>
               </p>
             </div>
           </Reveal>
@@ -210,7 +212,7 @@ export default function CloudPbxPage() {
                       <td className="p-4 md:p-5 font-bold text-white text-sm md:text-base">
                         {row.feature}
                       </td>
-                      <td className="p-4 md:p-5 text-gray-500 text-sm md:text-base">
+                      <td className="p-4 md:p-5 text-gray-400 text-sm md:text-base">
                         <div className="flex items-start gap-2">
                           <X className="w-4 h-4 text-red-400 mt-1 flex-shrink-0" />
                           {row.old}
@@ -240,7 +242,7 @@ export default function CloudPbxPage() {
                 <Cloud className="w-10 h-10 text-brand-accent flex-shrink-0" />
                 <div>
                   <h2 className="text-2xl md:text-3xl font-bold mb-3">
-                    המרכזייה היחידה עם שכבת AI מלאה
+                    מרכזייה עם שכבת AI מלאה
                   </h2>
                   <p className="text-gray-400 leading-relaxed mb-6">
                     במקום תפריט &quot;הקש 1&quot; — שלוחת AI שמבינה את הלקוח ומנתבת אותו
@@ -283,6 +285,7 @@ export default function CloudPbxPage() {
         </div>
       </section>
 
+      <VideoSection page="/cloud-pbx" />
       <FaqSection items={faq} title="שאלות נפוצות על מרכזיה בענן" />
       <CtaSection
         title="מוכנים לשדרג את המרכזייה?"

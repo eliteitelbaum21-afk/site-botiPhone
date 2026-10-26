@@ -16,20 +16,21 @@ import {
 import ServiceHero from "@/components/ServiceHero";
 import { VoiceBotVisual } from "@/components/home/ShowcaseVisuals";
 import FaqSection from "@/components/FaqSection";
+import VideoSection from "@/components/VideoSection";
 import CtaSection from "@/components/CtaSection";
 import Reveal from "@/components/Reveal";
 import JsonLd from "@/components/JsonLd";
 import { absoluteUrl, site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "בוט טלפוני חכם לעסק — מענה קולי AI שעונה 24/6",
+  title: "סוכן AI טלפוני לעסק — בוט קולי שעונה בעברית",
   description:
-    "בוט טלפוני מבוסס בינה מלאכותית שעונה לכל שיחה נכנסת, מבין דיבור חופשי בעברית, קובע פגישות ומנתב שיחות. הסוף לתפריטי הקש 1.",
+    "סוכן AI טלפוני לעסק: בוט בעברית שעונה לשיחות, מבין דיבור חופשי, קובע פגישות ומעביר לנציג. בוט קולי שהוא גם מזכירה וירטואלית ונציג וירטואלי: סוכן קולי עם מענה טלפוני AI, ישר מהמרכזייה.",
   alternates: { canonical: "/voice-bot" },
   openGraph: {
-    title: "בוט טלפוני חכם לעסק | BotiPhone",
+    title: "סוכן AI טלפוני לעסק | BotiPhone",
     description:
-      "מענה קולי AI שעונה לכל שיחה 24/6, מבין עברית חופשית, קובע פגישות ומסנן פניות.",
+      "בוט קולי בעברית שעונה לשיחות, מבין דיבור חופשי, קובע פגישות ומעביר לנציג כשצריך.",
     url: absoluteUrl("/voice-bot"),
   },
 };
@@ -42,36 +43,40 @@ const capabilities = [
       "הלקוח מדבר בשפה שלו — הבוט מבין. זיהוי דיבור מתקדם + מודל AI שמחלץ את הכוונה מכל משפט, גם כשהוא מנוסח אחרת מהצפוי.",
   },
   {
-    icon: <CalendarCheck className="w-7 h-7 text-brand-primary" />,
+    icon: <CalendarCheck className="w-7 h-7 text-brand-accent" />,
     title: "קביעת פגישות אוטומטית",
     description:
       "הבוט בודק זמינות ביומן, מציע מועדים פנויים, קובע את הפגישה ושולח אישור — בלי מעורבות של נציג.",
   },
   {
-    icon: <Filter className="w-7 h-7 text-brand-secondary" />,
+    icon: <Filter className="w-7 h-7 text-brand-accent" />,
     title: "סינון ואיסוף פרטים",
     description:
       "שאלות סינון חכמות שמזהות במה מדובר, אוספות את הפרטים הרלוונטיים ופותחות קריאת שירות או ליד במערכת.",
   },
   {
-    icon: <Network className="w-7 h-7 text-pink-500" />,
+    icon: <Network className="w-7 h-7 text-brand-accent" />,
     title: "ניתוב חכם לנציג",
     description:
       "שיחות מורכבות מנותבות לנציג הנכון עם כל ההקשר: מי הלקוח, מה הוא ביקש ומה הבוט כבר בירר.",
   },
   {
-    icon: <Clock className="w-7 h-7 text-yellow-400" />,
+    icon: <Clock className="w-7 h-7 text-brand-accent" />,
     title: "זמינות 24/6",
     description:
       "גם בלילה וגם הרבה אחרי שעות הפעילות — אף שיחה לא הולכת לאיבוד. הבוט עונה מיד, בלי תור ובלי המתנה.",
   },
   {
-    icon: <Workflow className="w-7 h-7 text-green-400" />,
+    icon: <Workflow className="w-7 h-7 text-brand-accent" />,
     title: "עצי שיחה גמישים",
     description:
       "כל תרחיש אפשרי: מסלולי שיחה מרובי שלבים, תנאים לפי מילות מפתח, חילוץ נתונים עם AI והפעלת פעולות אוטומטיות.",
   },
 ];
+
+/* TODO: לאשר — previous values were "100% מהשיחות נענות", "0 שניות זמן המתנה ללקוח", "24/6 זמינות".
+   Restore only numbers that can be backed up. */
+const stats: { value: string; label: string }[] = [];
 
 const flowSteps = [
   {
@@ -148,11 +153,11 @@ export default function VoiceBotPage() {
       <JsonLd data={breadcrumbJsonLd} />
 
       <ServiceHero
-        badge="בוט טלפוני חכם · Inbound AI"
+        badge="סוכן AI · בוט קולי בעברית"
         title={
           <>
-            בוט טלפוני שעונה, מבין <br className="hidden md:block" />
-            <span className="text-gradient">וסוגר עניינים בשבילכם</span>
+            סוכן AI טלפוני <br className="hidden md:block" />
+            <span className="text-gradient">שעונה, מבין וסוגר עניינים</span>
           </>
         }
         description="מענה קולי מבוסס בינה מלאכותית שעונה לכל שיחה נכנסת 24/6: מבין דיבור חופשי בעברית, עונה על שאלות, קובע פגישות, אוסף פרטים ומעביר לנציג רק כשבאמת צריך."
@@ -172,20 +177,18 @@ export default function VoiceBotPage() {
               לכל שיחה, מיד, בכל שעה — ומתעד הכל אוטומטית.
             </p>
           </Reveal>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12">
-            {[
-              { value: "100%", label: "מהשיחות נענות" },
-              { value: "0 שניות", label: "זמן המתנה ללקוח" },
-              { value: "24/6", label: "זמינות מסביב לשעון" },
-            ].map((stat, i) => (
-              <Reveal key={i} delay={i * 0.1}>
-                <div className="glass-panel rounded-2xl p-6">
-                  <div className="text-4xl font-black text-gradient mb-2">{stat.value}</div>
-                  <div className="text-gray-400">{stat.label}</div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          {stats.length > 0 && (
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12">
+              {stats.map((stat, i) => (
+                <Reveal key={i} delay={i * 0.1}>
+                  <div className="glass-panel rounded-2xl p-6">
+                    <div className="text-4xl font-black text-gradient mb-2">{stat.value}</div>
+                    <div className="text-gray-400">{stat.label}</div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -195,7 +198,7 @@ export default function VoiceBotPage() {
           <Reveal>
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-5xl font-bold mb-4">מה הבוט יודע לעשות?</h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-brand-primary to-brand-secondary mx-auto rounded-full" />
+              <div className="w-24 h-1 bg-gradient-to-r from-brand-primary to-brand-accent mx-auto rounded-full" />
             </div>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -226,7 +229,7 @@ export default function VoiceBotPage() {
             {flowSteps.map((step, idx) => (
               <Reveal key={idx} delay={idx * 0.1}>
                 <div className="relative glass-panel p-6 rounded-2xl h-full">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-primary to-brand-secondary flex items-center justify-center font-bold mb-4">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-accent to-brand-primary text-brand-navy flex items-center justify-center font-bold mb-4">
                     {idx + 1}
                   </div>
                   <h3 className="text-lg font-bold mb-2 text-white">{step.title}</h3>
@@ -247,7 +250,7 @@ export default function VoiceBotPage() {
                 <BrainCircuit className="w-10 h-10 text-brand-secondary flex-shrink-0" />
                 <div>
                   <h2 className="text-2xl md:text-3xl font-bold mb-3">
-                    טכנולוגיה של מוקד גדול — במחיר של עסק קטן
+                    טכנולוגיה של מוקד גדול, חלק מהמרכזייה
                   </h2>
                   <p className="text-gray-400 leading-relaxed">
                     מאחורי הבוט עומדת תשתית טלפוניה מקצועית: עצי שלוחות גמישים, חילוץ
@@ -290,6 +293,7 @@ export default function VoiceBotPage() {
         </div>
       </section>
 
+      <VideoSection page="/voice-bot" />
       <FaqSection items={faq} title="שאלות נפוצות על בוט טלפוני" />
       <CtaSection
         title="רוצים לשמוע איך זה נשמע בפועל?"

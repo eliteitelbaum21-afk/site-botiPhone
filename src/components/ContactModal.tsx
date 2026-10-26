@@ -41,7 +41,7 @@ export default function ContactModal({ isOpen, onClose, context }: ContactModalP
       />
 
       <div className="relative w-full max-w-md max-h-[90vh] overflow-y-auto bg-brand-card border border-white/10 rounded-3xl shadow-2xl shadow-brand-primary/20">
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-primary via-brand-accent to-brand-secondary" />
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-primary via-brand-accent to-brand-primary" />
 
         <button
           onClick={onClose}
@@ -54,7 +54,7 @@ export default function ContactModal({ isOpen, onClose, context }: ContactModalP
         <div className="p-8">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-12 h-12 rounded-xl bg-brand-primary/20 flex items-center justify-center">
-              <Bot className="w-6 h-6 text-brand-primary" />
+              <Bot className="w-6 h-6 text-brand-accent" />
             </div>
             <div>
               <h3 className="text-2xl font-bold text-white">{context.title}</h3>

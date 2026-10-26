@@ -125,7 +125,7 @@ export default function ContactForm({
         <>
           <div>
             <label htmlFor={`${source}-email`} className="block text-sm font-medium text-gray-300 mb-1.5">
-              אימייל <span className="text-gray-500">(לא חובה)</span>
+              אימייל <span className="text-gray-400">(לא חובה)</span>
             </label>
             <input
               type="email"
@@ -138,7 +138,7 @@ export default function ContactForm({
           </div>
           <div>
             <label htmlFor={`${source}-message`} className="block text-sm font-medium text-gray-300 mb-1.5">
-              במה נוכל לעזור? <span className="text-gray-500">(לא חובה)</span>
+              במה נוכל לעזור? <span className="text-gray-400">(לא חובה)</span>
             </label>
             <textarea
               id={`${source}-message`}
@@ -160,7 +160,7 @@ export default function ContactForm({
       <button
         type="submit"
         disabled={status === "sending"}
-        className="w-full bg-gradient-to-r from-brand-primary to-brand-secondary text-white font-bold py-3.5 rounded-xl mt-2 hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-60 disabled:hover:translate-y-0"
+        className="w-full bg-brand-primary text-brand-navy font-bold py-3.5 rounded-xl mt-2 hover:shadow-[0_0_20px_rgba(201,154,62,0.4)] transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-60 disabled:hover:translate-y-0"
       >
         {status === "sending" ? (
           <Loader2 className="w-5 h-5 animate-spin" />
@@ -171,7 +171,7 @@ export default function ContactForm({
           </>
         )}
       </button>
-      <p className="text-xs text-center text-gray-500">בלי התחייבות. נחזור אליכם תוך 24 שעות.</p>
+      <p className="text-xs text-center text-gray-400">בלי התחייבות. נחזור אליכם תוך 24 שעות.</p>
     </form>
   );
 }

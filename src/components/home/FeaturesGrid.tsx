@@ -11,7 +11,7 @@ import Reveal from "@/components/Reveal";
 
 const features = [
   {
-    icon: <LayoutDashboard className="w-8 h-8 text-brand-primary" />,
+    icon: <LayoutDashboard className="w-8 h-8 text-brand-accent" />,
     title: "מרכזייה עסקית בשליטה שלך",
     description:
       "שלוחות, פתיחים ותורי המתנה בקליק — עם ניהול נציגים מתקדם, סיכום שיחה אוטומטי למייל ו-AI שמנתח כל שיחה עם ההקשר מהשיחות הקודמות.",
@@ -19,7 +19,7 @@ const features = [
     linkLabel: "למידע נוסף על המרכזייה",
   },
   {
-    icon: <ContactRound className="w-8 h-8 text-brand-secondary" />,
+    icon: <ContactRound className="w-8 h-8 text-brand-accent" />,
     title: "CRM ומנוע נתונים משותף",
     description:
       "כרטיס לקוח שקופץ בזמן אמת עם תחילת השיחה. תיעוד אוטומטי של היסטוריית התקשורת ומעקב מדויק אחר לידים ומקורות פרסום.",
@@ -35,7 +35,7 @@ const features = [
     linkLabel: "גלו את אפשרויות האינטגרציה",
   },
   {
-    icon: <Bot className="w-8 h-8 text-pink-500" />,
+    icon: <Bot className="w-8 h-8 text-brand-accent" />,
     title: "סוכני AI חכמים לסינון ושירות",
     description:
       "בינה מלאכותית שמנהלת שיחות טבעיות 24/6, מבינה דיבור חופשי, פותרת תקלות נפוצות ומעבירה לנציג אנושי רק את השיחות המורכבות.",
@@ -43,7 +43,7 @@ const features = [
     linkLabel: "הכירו את סוכני ה-AI",
   },
   {
-    icon: <Megaphone className="w-8 h-8 text-yellow-400" />,
+    icon: <Megaphone className="w-8 h-8 text-brand-accent" />,
     title: "קמפיינים אוטומטיים שמביאים לידים",
     description:
       "הוצאת אלפי שיחות במקביל לסקרים או מכירות. סוכן ה-AI מנהל שיחת סינון אישית עם כל לקוח ומעביר לנציגים רק לידים חמים ומוכנים לסגירה.",
@@ -59,7 +59,7 @@ export default function FeaturesGrid() {
         <Reveal>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">יכולות המערכת</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-brand-primary to-brand-secondary mx-auto rounded-full" />
+            <div className="w-24 h-1 bg-gradient-to-r from-brand-primary to-brand-accent mx-auto rounded-full" />
           </div>
         </Reveal>
 

@@ -14,7 +14,7 @@ export default function NotFound() {
         </p>
         <Link
           href="/"
-          className="inline-block px-8 py-4 rounded-full bg-gradient-to-r from-brand-primary to-brand-secondary text-white font-bold hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] transition-all"
+          className="inline-block px-8 py-4 rounded-full bg-brand-primary text-brand-navy font-bold hover:shadow-[0_0_30px_rgba(201,154,62,0.5)] transition-all"
         >
           חזרה לדף הבית
         </Link>

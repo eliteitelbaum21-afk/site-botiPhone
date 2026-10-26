@@ -118,7 +118,7 @@ export default function ChatWidget() {
         style={{ maxHeight: "70vh" }}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-brand-primary to-brand-secondary">
+        <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-brand-navy to-brand-secondary">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
               <Bot className="w-4 h-4 text-white" />
@@ -147,7 +147,7 @@ export default function ChatWidget() {
               <div
                 className={`max-w-[82%] px-3 py-2 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
                   msg.role === "user"
-                    ? "bg-brand-primary text-white rounded-br-sm"
+                    ? "bg-brand-primary text-brand-navy rounded-br-sm"
                     : "bg-white/8 text-gray-100 rounded-bl-sm border border-white/8"
                 }`}
               >
@@ -175,7 +175,7 @@ export default function ChatWidget() {
         {/* Quick actions — shown before any user message */}
         {messages.length === 1 && (
           <div className="px-3 pb-1 flex flex-wrap gap-2">
-            {["מה כוללת המרכזייה?", "כמה עולה?", "רוצה שיחזרו אליי"].map((q) => (
+            {["מה כוללת המרכזייה?", "איך מתחילים?", "רוצה שיחזרו אליי"].map((q) => (
               <button
                 key={q}
                 onClick={() => sendMessage(q)}
@@ -202,7 +202,7 @@ export default function ChatWidget() {
           <button
             onClick={() => sendMessage()}
             disabled={!input.trim() || loading}
-            className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-primary to-brand-secondary flex items-center justify-center hover:opacity-90 transition-opacity disabled:opacity-40 flex-shrink-0"
+            className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-accent to-brand-primary text-brand-navy flex items-center justify-center hover:opacity-90 transition-opacity disabled:opacity-40 flex-shrink-0"
             aria-label="שלח"
           >
             <Send className="w-4 h-4 text-white" />
@@ -213,7 +213,7 @@ export default function ChatWidget() {
       {/* Toggle button */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-brand-primary to-brand-secondary shadow-lg shadow-brand-primary/40 flex items-center justify-center hover:scale-110 transition-transform"
+        className="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-brand-accent to-brand-primary text-brand-navy shadow-lg shadow-brand-primary/40 flex items-center justify-center hover:scale-110 transition-transform"
         aria-label={open ? "סגור צ'אט" : "פתח צ'אט"}
       >
         {open ? (

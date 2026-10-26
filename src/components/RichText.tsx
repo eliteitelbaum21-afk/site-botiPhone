@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 /**
  * Renders a plain string with minimal markdown support:
- * [text](/href) for internal links and **text** for bold.
+ * [text](/href) for links (http(s) links open in a new tab) and **text** for bold.
  */
 export default function RichText({ text }: { text: string }) {
   return <>{renderInline(text)}</>;
@@ -23,9 +23,15 @@ function renderInline(text: string): ReactNode[] {
     }
     if (match[1] !== undefined && match[2] !== undefined) {
       nodes.push(
-        <Link key={key++} href={match[2]}>
-          {match[1]}
-        </Link>
+        /^https?:\/\//.test(match[2]) ? (
+          <a key={key++} href={match[2]} target="_blank" rel="noopener noreferrer">
+            {match[1]}
+          </a>
+        ) : (
+          <Link key={key++} href={match[2]}>
+            {match[1]}
+          </Link>
+        )
       );
     } else if (match[3] !== undefined) {
       nodes.push(<strong key={key++}>{match[3]}</strong>);

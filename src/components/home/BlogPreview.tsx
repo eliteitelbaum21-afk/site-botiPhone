@@ -35,7 +35,7 @@ export default function BlogPreview() {
               >
                 <div className={`h-40 relative bg-gradient-to-br ${post.gradient} flex items-center justify-center`}>
                   <post.Icon className="w-16 h-16 text-white/80" />
-                  <div className="absolute top-4 right-4 bg-brand-primary text-white text-xs font-bold px-3 py-1 rounded-full">
+                  <div className="absolute top-4 right-4 bg-brand-primary text-brand-navy text-xs font-bold px-3 py-1 rounded-full">
                     {post.category}
                   </div>
                 </div>
@@ -43,10 +43,10 @@ export default function BlogPreview() {
                   <h3 className="text-xl font-bold mb-3 group-hover:text-brand-accent transition-colors leading-snug">
                     {post.title}
                   </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">
+                  <p className="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-2">
                     {post.description}
                   </p>
-                  <div className="mt-auto flex items-center gap-2 text-sm text-gray-500">
+                  <div className="mt-auto flex items-center gap-2 text-sm text-gray-400">
                     <Clock className="w-4 h-4" />
                     <span>{post.readTime}</span>
                   </div>

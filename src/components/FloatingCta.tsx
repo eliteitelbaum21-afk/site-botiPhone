@@ -18,7 +18,7 @@ export default function FloatingCta() {
       <a
         href={`tel:${site.phoneIntl}`}
         aria-label="חיוג אלינו"
-        className="w-14 h-14 rounded-full bg-gradient-to-br from-brand-primary to-brand-secondary flex items-center justify-center shadow-lg shadow-brand-primary/30 hover:scale-110 transition-transform"
+        className="w-14 h-14 rounded-full bg-gradient-to-br from-brand-accent to-brand-primary text-brand-navy flex items-center justify-center shadow-lg shadow-brand-primary/30 hover:scale-110 transition-transform"
       >
         <Phone className="w-6 h-6 text-white" />
       </a>

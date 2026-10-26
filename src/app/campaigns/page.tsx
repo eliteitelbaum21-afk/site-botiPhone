@@ -15,30 +15,35 @@ import {
 import ServiceHero from "@/components/ServiceHero";
 import { CampaignsVisual } from "@/components/home/ShowcaseVisuals";
 import FaqSection from "@/components/FaqSection";
+import VideoSection from "@/components/VideoSection";
 import CtaSection from "@/components/CtaSection";
 import Reveal from "@/components/Reveal";
 import JsonLd from "@/components/JsonLd";
 import { absoluteUrl, site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "קמפיין שיחות אוטומטי — חיוג AI לאלפי לידים ביום",
+  title: "חייגן אוטומטי והודעות קוליות — קמפיין שיחות עם בוט",
   description:
-    "קמפיין שיחות אוטומטי מבוסס AI: המערכת מחייגת לאלפי לידים במקביל, מנהלת שיחת סינון טבעית בעברית ומעבירה לנציג רק לידים חמים.",
+    "חייגן אוטומטי לעסק: הודעות קוליות וקמפיין שיחות עם בוט שמחייג לרשימה, מנהל שיחת סינון בעברית ומעביר לנציג רק את מי שמעוניין. כל שיחה מתועדת.",
   alternates: { canonical: "/campaigns" },
   openGraph: {
-    title: "קמפיין שיחות אוטומטי | BotiPhone",
+    title: "חייגן אוטומטי והודעות קוליות | BotiPhone",
     description:
-      "חיוג אוטומטי לאלפי לידים, טיוב לידים עם AI והעברה חמה לנציגים — מוקד מכירות שלא ישן.",
+      "חייגן אוטומטי והודעות קוליות: הבוט מחייג, מסנן, והלידים המעוניינים עוברים לנציג.",
     url: absoluteUrl("/campaigns"),
   },
 };
+
+/* TODO: לאשר — previous values were "5,000+ שיחות ביום", "< 60 שנ' מהליד לשיחה ראשונה",
+   "x3 יותר פגישות לנציג", "100% מהשיחות מתועדות". Restore only numbers that can be backed up. */
+const stats: { value: string; label: string }[] = [];
 
 const useCases = [
   {
     icon: <Flame className="w-7 h-7 text-orange-400" />,
     title: "טיפול מיידי בלידים חדשים",
     description:
-      "ליד שמשאיר פרטים בפייסבוק או בדף נחיתה מקבל שיחה תוך שניות — בשיא העניין שלו. מהירות התגובה מכפילה את אחוזי הסגירה.",
+      "ליד שמשאיר פרטים בפייסבוק או בדף נחיתה מקבל שיחה תוך שניות — בשיא העניין שלו, לפני שהוא פונה למתחרה.",
   },
   {
     icon: <Repeat className="w-7 h-7 text-brand-accent" />,
@@ -47,13 +52,13 @@ const useCases = [
       "אלפי לידים שנרדמו במערכת? הבוט עובר על כולם, מזהה מי עדיין רלוונטי ומחזיר למכירות רק את החמים.",
   },
   {
-    icon: <Users className="w-7 h-7 text-brand-secondary" />,
+    icon: <Users className="w-7 h-7 text-brand-accent" />,
     title: "שימור וחידוש לקוחות",
     description:
       "תזכורות חידוש, הצעות שדרוג ושיחות שימור ללקוחות קיימים — באופן אוטומטי ובקול אנושי ונעים.",
   },
   {
-    icon: <ListChecks className="w-7 h-7 text-green-400" />,
+    icon: <ListChecks className="w-7 h-7 text-brand-accent" />,
     title: "סקרים ואישורי הגעה",
     description:
       "סקרי שביעות רצון, אישורי פגישות ותיאומי משלוחים — הבוט שואל, מתעד ומעדכן את המערכת בתשובות.",
@@ -62,7 +67,7 @@ const useCases = [
 
 const engineFeatures = [
   {
-    icon: <Gauge className="w-6 h-6 text-brand-primary" />,
+    icon: <Gauge className="w-6 h-6 text-brand-accent" />,
     title: "ניהול ערוצים חכם",
     description:
       "המערכת מנהלת את קצב החיוג מול ספקי הטלפוניה, מנצלת כל ערוץ פנוי ושומרת על מגבלות הספק — בלי שיחות שנופלות.",
@@ -74,13 +79,13 @@ const engineFeatures = [
       "שאלות מותאמות לקהל וליעד הקמפיין: זכאות, תקציב, עניין. כל תשובה נשמרת ומשפיעה על ניתוב השיחה.",
   },
   {
-    icon: <Database className="w-6 h-6 text-brand-secondary" />,
+    icon: <Database className="w-6 h-6 text-brand-accent" />,
     title: "עדכון CRM אוטומטי",
     description:
       "כל שיחה מתועדת: סטטוס, תמלול, הקלטה והנתונים שנאספו — נשמרים ישירות במערכת שלכם דרך ה-API.",
   },
   {
-    icon: <BarChart3 className="w-6 h-6 text-pink-500" />,
+    icon: <BarChart3 className="w-6 h-6 text-brand-accent" />,
     title: "דוחות בזמן אמת",
     description:
       "כמה חויגו, כמה ענו, כמה התעניינו וכמה הועברו לנציג — הכל בדשבורד חי עם עץ סטטיסטיקות מפורט.",
@@ -146,7 +151,7 @@ export default function CampaignsPage() {
         badge="קמפיינים יוצאים · Outbound AI"
         title={
           <>
-            קמפיין שיחות אוטומטי: <br className="hidden md:block" />
+            חייגן אוטומטי והודעות קוליות: <br className="hidden md:block" />
             <span className="text-gradient">מוקד מכירות שלא ישן</span>
           </>
         }
@@ -154,16 +159,11 @@ export default function CampaignsPage() {
         visual={<CampaignsVisual />}
       />
 
-      {/* Numbers */}
+      {stats.length > 0 && (
       <section className="py-20 bg-brand-deep border-y border-white/5">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {[
-              { value: "5,000+", label: "שיחות ביום" },
-              { value: "< 60 שנ'", label: "מהליד לשיחה ראשונה" },
-              { value: "x3", label: "יותר פגישות לנציג" },
-              { value: "100%", label: "מהשיחות מתועדות" },
-            ].map((stat, i) => (
+            {stats.map((stat, i) => (
               <Reveal key={i} delay={i * 0.08}>
                 <div className="glass-panel rounded-2xl p-6">
                   <div className="text-3xl md:text-4xl font-black text-gradient mb-2">
@@ -176,6 +176,7 @@ export default function CampaignsPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* Use cases */}
       <section className="py-24">
@@ -183,7 +184,7 @@ export default function CampaignsPage() {
           <Reveal>
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-5xl font-bold mb-4">למה משתמשים בקמפיינים?</h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-brand-primary to-brand-secondary mx-auto rounded-full" />
+              <div className="w-24 h-1 bg-gradient-to-r from-brand-primary to-brand-accent mx-auto rounded-full" />
             </div>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -249,6 +250,7 @@ export default function CampaignsPage() {
         </div>
       </section>
 
+      <VideoSection page="/campaigns" />
       <FaqSection items={faq} title="שאלות נפוצות על קמפיינים אוטומטיים" />
       <CtaSection
         title="יש לכם רשימת לידים שמחכה?"

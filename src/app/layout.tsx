@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Heebo } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -16,18 +16,24 @@ const heebo = Heebo({
   display: "swap",
 });
 
+export const viewport: Viewport = { themeColor: "#0a1a33" };
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} | מרכזייה עסקית חכמה עם AI מובנה`,
+    default: `${site.name} | מרכזיית ענן חכמה לעסק`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
   keywords: [
+    "מרכזייה לעסק",
     "מרכזיה בענן",
     "מרכזייה וירטואלית",
-    "מרכזייה לעסק",
     "מרכזייה טלפונית",
+    "תפריט קולי",
+    "מענה קולי לעסק",
+    "הקלטת שיחות",
+    "מוקד טלפוני",
     "ניהול נציגים",
     "בוט טלפוני",
     "בוט קולי",
@@ -40,12 +46,12 @@ export const metadata: Metadata = {
     locale: "he_IL",
     url: site.url,
     siteName: site.name,
-    title: `${site.name} | בוט טלפוני חכם, קמפיינים אוטומטיים ומרכזיה בענן`,
+    title: `${site.name} | מרכזיית ענן חכמה לעסק`,
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} | בוט טלפוני חכם ומרכזיה בענן`,
+    title: `${site.name} | מרכזיית ענן חכמה לעסק`,
     description: site.description,
   },
   robots: {
@@ -66,6 +72,7 @@ const organizationJsonLd = {
   name: site.name,
   legalName: site.legalName,
   url: site.url,
+  logo: `${site.url}/brand/botiphone-app-icon-512.png`,
   email: site.email,
   telephone: site.phoneIntl,
   address: {

@@ -3,25 +3,25 @@ import Reveal from "@/components/Reveal";
 
 const steps = [
   {
-    icon: <Network className="w-8 h-8 text-brand-primary" />,
+    icon: <Network className="w-8 h-8 text-brand-accent" />,
     step: "01",
-    title: "מגדירים את המרכזייה",
+    title: "שיחת היכרות",
     description:
-      "שלוחות, תורים, ניתובים וזמני פעילות — הכל מממשק אחד, בלי טכנאי ובלי חומרה במשרד.",
+      "מספרים לנו איך עובד הטלפון אצלכם היום: מספרים, עובדים, שעות, ומה מפריע. נבנה יחד את המסלול של המתקשר.",
   },
   {
-    icon: <Sparkles className="w-8 h-8 text-brand-secondary" />,
+    icon: <Sparkles className="w-8 h-8 text-brand-accent" />,
     step: "02",
-    title: "הנציגים וה-AI עובדים יחד",
+    title: "מקימים ומניידים",
     description:
-      "ניהול נציגים מתקדם לצד סוכני AI שעונים, מסננים ומעבירים שיחות — עם כרטיס לקוח והקשר מלא.",
+      "אנחנו מקימים את התפריט, השלוחות והנציגים, בודקים בשיחות אמיתיות, ומניידים את המספר הקיים.",
   },
   {
     icon: <BarChart3 className="w-8 h-8 text-brand-accent" />,
     step: "03",
-    title: "רואים הכל בזמן אמת",
+    title: "באוויר, עם ליווי",
     description:
-      "סיכום שיחה למייל, תמלול, ניתוח AI עם היסטוריית השיחות הקודמות, ודוחות שמנהלים מוקד באמת.",
+      "הצוות מקבל הדרכה, ואתם רואים כל שיחה בממשק. שינויים עושים לבד מהדפדפן, או מבקשים מאיתנו.",
   },
 ];
 
@@ -34,7 +34,7 @@ export default function HowItWorks() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">איך זה עובד?</h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              מרכזייה יציבה באוויר תוך ימים — עם AI שמחזק את הנציגים, לא מחליף את השליטה שלכם.
+              בלי טכנאי ובלי חומרה. רוב העסקים עולים לאוויר תוך ימים.
             </p>
           </div>
         </Reveal>

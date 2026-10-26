@@ -42,7 +42,7 @@ export default function FeatureShowcase({
             <Reveal>
               <div>
                 <p className="text-brand-secondary font-bold tracking-wider uppercase mb-2 flex items-center gap-2">
-                  <Zap className="w-5 h-5 text-yellow-400" />
+                  <Zap className="w-5 h-5 text-brand-accent" />
                   {subtitle}
                 </p>
                 <h2 className="text-3xl md:text-5xl font-bold leading-tight mb-6">{title}</h2>

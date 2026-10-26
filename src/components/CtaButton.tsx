@@ -17,7 +17,7 @@ interface CtaButtonProps {
 
 const variantClasses: Record<NonNullable<CtaButtonProps["variant"]>, string> = {
   primary:
-    "bg-gradient-to-r from-brand-primary to-brand-secondary text-white hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:-translate-y-1",
+    "bg-brand-primary text-brand-navy hover:shadow-[0_0_30px_rgba(201,154,62,0.5)] hover:-translate-y-1",
   secondary:
     "bg-white/5 border border-white/10 text-white hover:bg-white/10 backdrop-blur-sm",
   white: "bg-white text-brand-dark hover:bg-gray-100 hover:scale-105",

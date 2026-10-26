@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/pbx", destination: "/cloud-pbx", permanent: false },
       { source: "/ai-agents", destination: "/voice-bot", permanent: false },
+      { source: "/pricing", destination: "/contact", permanent: true },
     ];
   },
 };

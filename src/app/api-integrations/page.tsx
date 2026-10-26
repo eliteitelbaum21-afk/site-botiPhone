@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Database, Plug, Workflow } from "lucide-react";
 import ServiceHero from "@/components/ServiceHero";
 import CtaSection from "@/components/CtaSection";
+import VideoSection from "@/components/VideoSection";
 import Reveal from "@/components/Reveal";
 import { absoluteUrl, site } from "@/lib/site";
 
@@ -26,13 +27,13 @@ const highlights = [
       "התחברו ל-CRM, ERP, חנות אונליין ומערכות פנימיות דרך API פתוח ואינטגרציות מוכנות.",
   },
   {
-    icon: <Database className="w-7 h-7 text-brand-primary" />,
+    icon: <Database className="w-7 h-7 text-brand-accent" />,
     title: "שליפת נתונים תוך כדי שיחה",
     description:
       "בדיקת סטטוס הזמנות, יתרות ומלאי בזמן אמת — בלי להעביר את הלקוח בין מערכות.",
   },
   {
-    icon: <Workflow className="w-7 h-7 text-brand-secondary" />,
+    icon: <Workflow className="w-7 h-7 text-brand-accent" />,
     title: "עדכון אוטומטי",
     description:
       "פרטים שנאספים בשיחה מתעדכנים ישירות במערכות החיצוניות שלכם.",
@@ -71,6 +72,7 @@ export default function ApiIntegrationsPage() {
         </div>
       </section>
 
+      <VideoSection page="/api-integrations" />
       <CtaSection />
     </>
   );

@@ -50,7 +50,7 @@ export default function ContactPage() {
               <div className="space-y-6">
                 {[
                   {
-                    icon: <Phone className="w-5 h-5 text-brand-primary" />,
+                    icon: <Phone className="w-5 h-5 text-brand-accent" />,
                     title: "טלפון",
                     value: (
                       <a href={`tel:${site.phoneIntl}`} dir="ltr" className="hover:text-brand-accent transition-colors">
@@ -59,7 +59,7 @@ export default function ContactPage() {
                     ),
                   },
                   {
-                    icon: <Mail className="w-5 h-5 text-brand-secondary" />,
+                    icon: <Mail className="w-5 h-5 text-brand-accent" />,
                     title: "אימייל",
                     value: (
                       <a href={`mailto:${site.email}`} className="hover:text-brand-accent transition-colors">
@@ -73,9 +73,9 @@ export default function ContactPage() {
                     value: site.address,
                   },
                   {
-                    icon: <Clock className="w-5 h-5 text-green-400" />,
+                    icon: <Clock className="w-5 h-5 text-brand-accent" />,
                     title: "זמינות",
-                    value: "הבוט שלנו זמין 24/6 — נציג אנושי בימים א'-ה', 9:00-18:00",
+                    value: "נציג בימים א'-ה', 9:00-18:00. ניסיון מתחיל בשיחה.",
                   },
                 ].map((item, idx) => (
                   <Reveal key={idx} delay={0.15 + idx * 0.07}>
@@ -84,7 +84,7 @@ export default function ContactPage() {
                         {item.icon}
                       </div>
                       <div>
-                        <div className="text-sm text-gray-500">{item.title}</div>
+                        <div className="text-sm text-gray-400">{item.title}</div>
                         <div className="text-white font-medium">{item.value}</div>
                       </div>
                     </div>
@@ -95,7 +95,7 @@ export default function ContactPage() {
 
             <Reveal delay={0.2} y={40}>
               <div className="glass-panel rounded-3xl p-8 md:p-10 border border-white/10 relative overflow-hidden">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-primary via-brand-accent to-brand-secondary" />
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-primary via-brand-accent to-brand-primary" />
                 <h2 className="text-2xl font-bold mb-2">השאירו פרטים</h2>
                 <p className="text-gray-400 mb-8">נחזור אליכם בהקדם עם מענה מותאם לעסק שלכם.</p>
                 <ContactForm

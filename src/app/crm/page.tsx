@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ContactRound, History, Target } from "lucide-react";
 import ServiceHero from "@/components/ServiceHero";
 import CtaSection from "@/components/CtaSection";
+import VideoSection from "@/components/VideoSection";
 import Reveal from "@/components/Reveal";
 import { absoluteUrl, site } from "@/lib/site";
 
@@ -20,13 +21,13 @@ export const metadata: Metadata = {
 
 const highlights = [
   {
-    icon: <ContactRound className="w-7 h-7 text-brand-secondary" />,
+    icon: <ContactRound className="w-7 h-7 text-brand-accent" />,
     title: "CRM Pop-up בזמן אמת",
     description:
       "עם תחילת השיחה מופיע כרטיס הלקוח לנציג — שם, היסטוריה והקשר מלא.",
   },
   {
-    icon: <History className="w-7 h-7 text-brand-primary" />,
+    icon: <History className="w-7 h-7 text-brand-accent" />,
     title: "תיעוד אוטומטי",
     description:
       "כל שיחה, הודעה ופעולה נשמרות אוטומטית בהיסטוריית התקשורת של הלקוח.",
@@ -71,6 +72,7 @@ export default function CrmPage() {
         </div>
       </section>
 
+      <VideoSection page="/crm" />
       <CtaSection />
     </>
   );

@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import RichText from "@/components/RichText";
 import CtaSection from "@/components/CtaSection";
+import FaqSection from "@/components/FaqSection";
 import { getAllPosts, getPostBySlug, type ContentBlock } from "@/lib/blog";
 import { absoluteUrl, site } from "@/lib/site";
 
@@ -60,6 +61,16 @@ function ContentBlockView({ block }: { block: ContentBlock }) {
           ))}
         </ul>
       );
+    case "ol":
+      return (
+        <ol start={block.start}>
+          {block.items.map((item, i) => (
+            <li key={i}>
+              <RichText text={item} />
+            </li>
+          ))}
+        </ol>
+      );
     default:
       return (
         <p>
@@ -110,7 +121,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         <header className="relative overflow-hidden">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand-primary/10 rounded-full blur-[120px] pointer-events-none" />
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <nav className="flex items-center gap-2 text-sm text-gray-500 mb-8" aria-label="ניווט משני">
+            <nav className="flex items-center gap-2 text-sm text-gray-400 mb-8" aria-label="ניווט משני">
               <Link href="/" className="hover:text-brand-accent transition-colors">
                 דף הבית
               </Link>
@@ -121,14 +132,14 @@ export default async function BlogPostPage({ params }: PageProps) {
             </nav>
 
             <div className="flex items-center gap-3 mb-6">
-              <span className="bg-brand-primary text-white text-xs font-bold px-3 py-1 rounded-full">
+              <span className="bg-brand-primary text-brand-navy text-xs font-bold px-3 py-1 rounded-full">
                 {post.category}
               </span>
-              <span className="flex items-center gap-1.5 text-sm text-gray-500">
+              <span className="flex items-center gap-1.5 text-sm text-gray-400">
                 <Clock className="w-4 h-4" />
                 {post.readTime}
               </span>
-              <time dateTime={post.date} className="text-sm text-gray-500">
+              <time dateTime={post.date} className="text-sm text-gray-400">
                 {new Date(post.date).toLocaleDateString("he-IL", {
                   day: "numeric",
                   month: "long",
@@ -152,6 +163,8 @@ export default async function BlogPostPage({ params }: PageProps) {
           ))}
         </div>
       </article>
+
+      {post.faq && post.faq.length > 0 && <FaqSection items={post.faq} />}
 
       {/* Related posts */}
       <section className="py-16 bg-brand-deep border-t border-white/5">

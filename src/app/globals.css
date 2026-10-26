@@ -1,12 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-dark: #0b0f19;
-  --color-brand-deep: #05080f;
-  --color-brand-card: #131b2f;
-  --color-brand-primary: #6366f1;
-  --color-brand-secondary: #8b5cf6;
-  --color-brand-accent: #38bdf8;
+  /* botiPhone brand — navy + gold (project doc 13-brand) */
+  --color-brand-dark: #0a1a33;
+  --color-brand-deep: #06111f;
+  --color-brand-card: #11284a;
+  --color-brand-primary: #c99a3e; /* gold */
+  --color-brand-secondary: #3b63a7; /* brand blue */
+  --color-brand-accent: #e2c27d; /* light gold, readable on navy */
+  --color-brand-navy: #0e2240;
+  --color-brand-ivory: #f7f4ee;
   --font-sans: var(--font-heebo), "Heebo", sans-serif;
 }
 
@@ -23,34 +26,34 @@ body {
 
 ::selection {
   background-color: var(--color-brand-primary);
-  color: #ffffff;
+  color: #0e2240;
 }
 
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0f19;
+  background: #06111f;
 }
 ::-webkit-scrollbar-thumb {
-  background: #374151;
+  background: #24406b;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #4b5563;
+  background: #c99a3e;
 }
 
 @utility glass-panel {
-  background: rgba(19, 27, 47, 0.7);
+  background: rgba(17, 40, 74, 0.6);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 @utility text-gradient {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(to left, #8b5cf6, #38bdf8);
+  background-image: linear-gradient(to left, #c99a3e, #f1dda6);
 }
 
 @utility bg-grid {
@@ -91,6 +94,16 @@ body {
   list-style: disc;
 }
 
+.article-body ol {
+  margin-bottom: 1.5rem;
+  padding-inline-start: 1.5rem;
+  list-style: decimal;
+}
+
+.article-body li::marker {
+  color: var(--color-brand-accent);
+}
+
 .article-body li {
   color: #d1d5db;
   line-height: 1.8;
@@ -109,5 +122,60 @@ body {
 }
 
 .article-body a:hover {
-  color: #7dd3fc;
+  color: #f1dda6;
+}
+
+@keyframes hero-eq {
+  0%,
+  100% {
+    transform: scaleY(0.28);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.hero-eq i {
+  transform-origin: bottom;
+  animation: hero-eq 1.05s ease-in-out infinite;
+}
+
+@keyframes hero-ring {
+  0% {
+    transform: scale(0.72);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+.hero-ring {
+  animation: hero-ring 2.8s ease-out infinite;
+}
+
+@keyframes hero-signal {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.hero-signal-pulse {
+  stroke-dasharray: 5 95;
+  animation: hero-signal 4.5s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-signal-pulse {
+    display: none;
+  }
+
+  .hero-eq i,
+  .hero-ring {
+    animation: none;
+  }
 }

@@ -1,14 +1,11 @@
 import Link from "next/link";
-import { Bot, LogIn, Mail, MapPin, Phone } from "lucide-react";
+import { LogIn, Mail, MapPin, Phone } from "lucide-react";
 import { site } from "@/lib/site";
+import { products } from "@/lib/products";
 
 const serviceLinks = [
-  { href: "/cloud-pbx", label: "מרכזיה בענן לעסק" },
-  { href: "/voice-bot", label: "סוכני AI טלפוניים" },
-  { href: "/campaigns", label: "קמפיין שיחות אוטומטי" },
-  { href: "/crm", label: "CRM מובנה" },
-  { href: "/api-integrations", label: "API ואינטגרציות" },
-  { href: "/pricing", label: "מחירון" },
+  ...products.map((p) => ({ href: p.href, label: p.label })),
+  { href: "/examples", label: "דוגמאות לפי סוג עסק" },
 ];
 
 const knowledgeLinks = [
@@ -25,20 +22,18 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="col-span-1 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <Bot className="w-6 h-6 text-brand-primary" />
-              <span className="font-black text-xl tracking-tight">
-                Boti<span className="text-brand-accent">Phone</span>
-              </span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/brand/botiphone-logo-white.svg" alt="BotiPhone" width={183} height={32} className="h-8 w-auto" />
             </Link>
-            <p className="text-gray-500 max-w-sm leading-relaxed">
-              מרכזייה עסקית מתקדמת עם ניהול נציגים, סיכומי שיחה ו-AI מובנה — יחד עם
-              CRM, אינטגרציות וקמפיינים אוטומטיים בפלטפורמה אחת.
+            <p className="text-gray-400 max-w-sm leading-relaxed">
+              מרכזיית ענן חכמה לעסקים בישראל: תפריט קולי, שלוחות, נציגים והקלטות,
+              ובוט קולי AI כשתרצו.
             </p>
           </div>
 
           <nav aria-label="שירותים">
             <h2 className="text-white font-bold mb-4 text-base">השירותים שלנו</h2>
-            <ul className="space-y-2 text-gray-500">
+            <ul className="space-y-2 text-gray-400">
               {serviceLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="hover:text-brand-accent transition-colors">
@@ -51,7 +46,7 @@ export default function Footer() {
 
           <nav aria-label="מרכז ידע">
             <h2 className="text-white font-bold mb-4 text-base">מרכז ידע</h2>
-            <ul className="space-y-2 text-gray-500">
+            <ul className="space-y-2 text-gray-400">
               {knowledgeLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="hover:text-brand-accent transition-colors">
@@ -64,7 +59,7 @@ export default function Footer() {
 
           <div>
             <h2 className="text-white font-bold mb-4 text-base">יצירת קשר</h2>
-            <ul className="space-y-3 text-gray-500">
+            <ul className="space-y-3 text-gray-400">
               <li>
                 <a
                   href={`mailto:${site.email}`}
