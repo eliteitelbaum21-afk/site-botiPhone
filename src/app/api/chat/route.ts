@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 import { site } from "@/lib/site";
-import { processLead, type LeadIntent } from "@/lib/leads";
+import { LeadDeliveryError, processLead, type LeadIntent } from "@/lib/leads";
 
 export const dynamic = "force-dynamic";
 
@@ -167,16 +167,25 @@ export async function POST(request: NextRequest) {
       const phone = args.phone?.trim();
 
       if (name && phone) {
-        await processLead({
-          name,
-          phone,
-          intent: args.intent ?? "chat",
-          plan: args.plan?.trim(),
-          note: args.note?.trim(),
-          source: "chat-widget",
-          page: "chat",
-          ip,
-        });
+        try {
+          await processLead({
+            name,
+            phone,
+            intent: args.intent ?? "chat",
+            plan: args.plan?.trim(),
+            note: args.note?.trim(),
+            source: "chat-widget",
+            page: "chat",
+          });
+        } catch (err) {
+          console.error("Chat lead intake failed:", err);
+          const message =
+            err instanceof LeadDeliveryError
+              ? err.message
+              : "לא הצלחנו לשמור את הפנייה. נסו שוב.";
+          const status = err instanceof LeadDeliveryError ? err.httpStatus : 502;
+          return NextResponse.json({ error: message }, { status });
+        }
 
         return NextResponse.json({
           reply: `תודה ${name}! קיבלנו את הפרטים שלך (${phone}). נציג יחזור אליך בהקדם.`,

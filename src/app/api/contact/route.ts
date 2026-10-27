@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { processLead, type LeadIntent } from "@/lib/leads";
+import { LeadDeliveryError, processLead, type LeadIntent } from "@/lib/leads";
 
 const leadSchema = z.object({
   name: z.string().trim().min(2, "שם קצר מדי").max(100),
@@ -65,11 +65,18 @@ export async function POST(request: NextRequest) {
 
   const { website: _website, ...lead } = parsed.data;
 
-  await processLead({
-    ...lead,
-    intent: (lead.intent ?? "contact") as LeadIntent,
-    ip,
-  });
+  try {
+    await processLead({
+      ...lead,
+      intent: (lead.intent ?? "contact") as LeadIntent,
+    });
+  } catch (err) {
+    console.error("Contact lead intake failed:", err);
+    const message =
+      err instanceof LeadDeliveryError ? err.message : "לא הצלחנו לשמור את הפנייה. נסו שוב.";
+    const status = err instanceof LeadDeliveryError ? err.httpStatus : 502;
+    return NextResponse.json({ error: message }, { status });
+  }
 
   return NextResponse.json({ ok: true });
 }

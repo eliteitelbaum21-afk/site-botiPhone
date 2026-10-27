@@ -20,14 +20,14 @@ npm start        # הרצת פרודקשן
 
 ## טופס צור קשר
 
-כל ליד נשמר תמיד ל-`data/leads.jsonl`. לשליחת מייל — מעתיקים את `.env.example` ל-`.env` וממלאים את הגדרות ה-SMTP:
+ליד מהטופס ומהצ'אט נשמר ב-CRM: `POST https://pbx.botiphone.com/api/public/leads`.
+המפתח נוצר בהגדרות → קליטת לידים, מתחיל ב-`bk_`, ונשמר ב-`LEADS_API_KEY`.
+בלי מפתח הטופס מחזיר שגיאה ולא מדווח שהפנייה התקבלה.
 
 ```
-SMTP_HOST=...
-SMTP_PORT=587
-SMTP_USER=...
-SMTP_PASS=...
-CONTACT_EMAIL=כתובת שאליה יישלחו הלידים
+LEADS_API_KEY=bk_...
+# אופציונלי — גובר על מקור ברירת המחדל של המפתח
+# LEADS_SOURCE_ID=12
 NEXT_PUBLIC_SITE_URL=הדומיין של האתר (לקנוניקל ול-sitemap)
 ```
 

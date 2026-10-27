@@ -25,7 +25,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# leads backup
+# old local lead log; leads now go to the CRM
 /data/leads.jsonl
 
 # legacy vite app
